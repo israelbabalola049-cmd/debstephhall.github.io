@@ -71,7 +71,7 @@ nav ul li a:hover {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: white;
+  background: lime;
   border-radius: 2px;
   transition: 0.3s;
 }
@@ -240,3 +240,4 @@ footer {
     text-align: center;
   }
 }
+
