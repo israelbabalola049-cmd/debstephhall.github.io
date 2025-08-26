@@ -12,7 +12,7 @@ body {
 nav {
   background-color: #b30000;
   color: white;
-  padding: 15px 25px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,7 +60,7 @@ nav h1 {
 
 /* Hamburger Icon */
 .hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
@@ -238,5 +238,6 @@ footer {
     text-align: center;
   }
 }
+
 
 
