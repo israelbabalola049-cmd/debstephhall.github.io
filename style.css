@@ -60,7 +60,7 @@ nav h1 {
 
 /* Hamburger Icon */
 .hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
@@ -231,6 +231,7 @@ footer {
 
   .nav-links.active {
     display: flex;
+    flex-direction: column;
   }
 
   header {
@@ -238,6 +239,7 @@ footer {
     text-align: center;
   }
 }
+
 
 
 
