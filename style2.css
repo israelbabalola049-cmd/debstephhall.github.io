@@ -88,15 +88,16 @@ footer { background-color: #222; color: #ccc; text-align: center; padding: 30px;
     align-items: center;
     position: relative;
   }
-  .hamburger { display: flex; order: 2; }
-  .nav-links { display: none; flex-direction: column; position: absolute; width: 100%; margin-top: 10px; background-color: #b30000; padding: 10px 0; top: 60px;
-        left: 0;
+  .hamburger { display: flex; order: 2; z: 1001; }
+  .nav-links { display: none; flex-direction: column; position: fixed; width: 100%; margin-top: 10px; background-color: #b30000; padding: 10px 0; top: 60px;
+        left: 0; max-height: calc(100vh -60px); overflow-y: auto;
              }
   .nav-links.active { display: flex; }
   header { flex-direction: column; text-align: center; }
   #welcome .welcome-container { flex-direction: column; text-align: left; }
   #welcome img { width: 150px; }
 }
+
 
 
 
