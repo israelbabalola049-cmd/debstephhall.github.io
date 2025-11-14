@@ -12,7 +12,7 @@ body {
 nav { background-color: #b30000; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 nav .nav-logo { display: flex; align-items: center; gap: 10px; }
 nav img { height: 50px; border-radius: 8px; }
-nav h1 { font-family: 'Cinzel', serif; font-size: 28px; margin: 0; letter-spacing: 2px; color: white; }
+nav h1 { font-family: 'Cinzel', serif; font-size: 25px; margin: 0; letter-spacing: 1px; color: white; }
 .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
 .nav-links a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
 .nav-links a:hover { text-shadow: 0 0 5px #fff; }
@@ -52,7 +52,7 @@ header {
 .hero-enquiry-btn { display: inline-block; margin: 20px auto 0 auto; width: 180px; text-align: center; padding: 10px 15px; }
 
 /* Welcome */
-#welcome .welcome-container { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+#welcome .welcome-container { display: flex; align-items: left; gap: 30px; flex-wrap: wrap; }
 #welcome img { width: 200px; border-radius: 15px; }
 #welcome .welcome-text h3 { margin: 0; color: #b30000; }
 
@@ -87,3 +87,4 @@ footer { background-color: #222; color: #ccc; text-align: center; padding: 30px;
   #welcome .welcome-container { flex-direction: column; text-align: center; }
   #welcome img { width: 150px; }
 }
+
