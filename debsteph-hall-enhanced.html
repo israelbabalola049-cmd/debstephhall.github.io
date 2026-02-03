@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debsteph Hall School - Where Young Minds Flourish</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #C1292E;
+            --dark-grey: #2A2A2A;
+            --medium-grey: #4A4A4A;
+            --light-grey: #E8E8E8;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark-grey);
+            background: var(--dark-grey);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: var(--red);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            opacity: 0.9;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section with Background Images */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 12rem 5% 10rem;
+            overflow: hidden;
+        }
+
+        /* Background image slideshow */
+        .hero-backgrounds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .hero-bg.active {
+            opacity: 1;
+        }
+
+        /* Placeholder backgrounds - replace these URLs with your actual images */
+        .hero-bg-1 {
+            background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600');
+        }
+
+        .hero-bg-2 {
+            background-image: url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1600');
+        }
+
+        .hero-bg-3 {
+            background-image: url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600');
+        }
+
+        /* Glassmorphism overlay */
+        .hero-glass {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(42, 42, 42, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Stylized "Young Minds" with decorative lines */
+        .young-minds-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .decorative-line {
+            width: 60px;
+            height: 3px;
+            background: var(--red);
+            position: relative;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .decorative-line::before {
+            left: -4px;
+        }
+
+        .decorative-line::after {
+            right: -4px;
+        }
+
+        .young-minds-text {
+            color: var(--red);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+            color: var(--light-grey);
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-reveal {
+            opacity: 0;
+            filter: blur(3px);
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .section-reveal.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        /* Welcome Section */
+        .welcome {
+            background: var(--white);
+        }
+
+        .welcome-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--red);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .welcome h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--dark-grey);
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--medium-grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .signature {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-grey);
+        }
+
+        .signature-name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-grey);
+            margin-bottom: 0.3rem;
+        }
+
+        .signature-title {
+            font-size: 0.95rem;
+            color: var(--medium-grey);
+        }
+
+        /* Programs Section */
+        .programs {
+            background: var(--off-white);
+        }
+
+        .programs h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: var(--dark-grey);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem 3rem;
+        }
+
+        .program-item {
+            text-align: left;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--red);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .program-item h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 0.8rem;
+        }
+
+        .program-item p {
+            color: var(--medium-grey);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .program-age {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background: var(--off-white);
+        }
+
+        .why-us h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: var(--dark-grey);
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--red) 0%, #A02228 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: var(--medium-grey);
+            line-height: 1.7;
+        }
+
+        /* Activities Section */
+        .activities {
+            background: var(--off-white);
+            color: var(--dark-grey);
+        }
+
+        .activities h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--dark-grey);
+        }
+
+        .activities-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+            font-size: 1.1rem;
+            color: var(--medium-grey);
+            line-height: 1.8;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .activity-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--light-grey);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(193, 41, 46, 0.15);
+        }
+
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            background: var(--light-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .activity-content {
+            padding: 2rem;
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-grey);
+        }
+
+        .activity-card p {
+            color: var(--medium-grey);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Pre-Contact CTA Section */
+        .pre-contact-cta {
+            background: var(--red);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 5%;
+        }
+
+        .pre-contact-cta h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .pre-contact-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-primary-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.3rem 3.5rem;
+            background: var(--white);
+            color: var(--red);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Facilities Section */
+        .facilities {
+            background: var(--white);
+            color: var(--dark-grey);
+            padding: 8rem 0;
+        }
+
+        .facilities-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .facilities h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-align: center;
+            color: var(--dark-grey);
+        }
+
+        .facilities-showcase {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .facility-item {
+            position: relative;
+            height: 450px;
+            background: var(--light-grey);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .facility-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .facility-caption {
+            padding: 2.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .facility-caption h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .facility-caption p {
+            font-size: 1rem;
+            opacity: 0.9;
+            color: var(--white);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--off-white);
+            padding: 8rem 5%;
+        }
+
+        .contact-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-info h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .contact-item-content h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--medium-grey);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .contact-item-content p {
+            color: var(--dark-grey);
+            font-size: 1.1rem;
+        }
+
+        .contact-item-content a {
+            color: var(--dark-grey);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--red);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-grey);
+            color: var(--white);
+            padding: 4rem 5% 3rem;
+            text-align: center;
+        }
+
+        .footer-stats {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-stat {
+            text-align: center;
+        }
+
+        .footer-stat-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-stat-label {
+            font-size: 0.9rem;
+            color: var(--light-grey);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            width: 100%;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--red);
+                flex-direction: column;
+                padding: 1rem 5%;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+
+            .decorative-line {
+                width: 40px;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .programs-grid,
+            .features-list {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-stats {
+                gap: 3rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Parallax Effect */
+        .parallax-section {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                <img src="logo.png" alt="Debsteph Hall School Logo" class="logo-image">
+                <span><span style="text-transform: uppercase;">Debsteph</span> Hall School</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Alternating Backgrounds -->
+    <section class="hero">
+        <!-- Background image slideshow -->
+        <div class="hero-backgrounds">
+            <div class="hero-bg hero-bg-1 active"></div>
+            <div class="hero-bg hero-bg-2"></div>
+            <div class="hero-bg hero-bg-3"></div>
+        </div>
+        
+        <!-- Glassmorphism overlay -->
+        <div class="hero-glass"></div>
+        
+        <div class="hero-content">
+            <h1>
+                Where 
+                <span class="young-minds-wrapper">
+                    <span class="decorative-line"></span>
+                    <span class="young-minds-text">Young Minds</span>
+                    <span class="decorative-line"></span>
+                </span>
+                <br>Flourish
+            </h1>
+            <p class="hero-subtitle">Welcome to Debsteph Hall School—a safe, nurturing space where children discover the joy of learning and grow into confident, capable individuals.</p>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome section-reveal" id="about">
+        <div class="welcome-content">
+            <div class="section-label">Welcome Address</div>
+            <h2>A Foundation for Excellence</h2>
+            <p class="welcome-text">It is my pleasure to welcome you to Debsteph Hall School. As proprietress, I am committed to providing young learners with a strong educational foundation in a safe and supportive environment.</p>
+            
+            <p class="welcome-text">We understand that the early years of education are critical in shaping your child's future. At Debsteph Hall, we combine quality teaching with personalized attention, ensuring each child develops strong academic skills alongside confidence, curiosity, and good character. Our dedicated teachers create engaging lessons that make learning enjoyable while instilling discipline and a genuine love for knowledge.</p>
+            
+            <p class="welcome-text">From our preschool to primary classes, we focus on building essential skills in literacy, numeracy, and critical thinking, while nurturing the social and emotional development that helps children thrive. We maintain a structured yet caring atmosphere where every child is encouraged to participate, ask questions, and discover their abilities.</p>
+            
+            <p class="welcome-text">I invite you to visit our school in Bogije and see how we can partner with you in your child's educational journey.</p>
+            
+            <div class="signature">
+                <div class="signature-name">Mrs. Oluwakemi B.</div>
+                <div class="signature-title">Proprietress</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs section-reveal parallax-section" id="programs">
+        <h2>Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-item">
+                <div class="program-icon">🎨</div>
+                <h3>Pre-school</h3>
+                <p>Our preschool program introduces little learners to the joy of education with fun-filled activities that stimulate curiosity, creativity, and social skills in a loving environment.</p>
+                <div class="program-age">Ages 2-3</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="program-icon">📚</div>
+                <h3>Nursery</h3>
+                <p>In nursery, children are guided through playful learning experiences that build foundational skills in literacy, numeracy, and collaboration while nurturing confidence and independence.</p>
+                <div class="program-age">Ages 4-5</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="program-icon">🎓</div>
+                <h3>Primary</h3>
+                <p>The primary school program combines a strong academic curriculum with values education, critical thinking, and leadership skills, helping children excel both in and out of the classroom.</p>
+                <div class="program-age">Ages 6-12</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="program-icon">⚽</div>
+                <h3>Extra-Curricular</h3>
+                <p>We offer diverse activities including music, arts, sports, and outdoor exploration to foster creativity, teamwork, and well-rounded development for every child.</p>
+                <div class="program-age">All ages</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us section-reveal">
+        <h2>Why Parents Choose<br>Debsteph Hall</h2>
+        <div class="features-list">
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-content">
+                    <h3>Safe Learning Environment</h3>
+                    <p>A secure campus where children feel protected and parents have complete peace of mind throughout the school day.</p>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">👩‍🏫</div>
+                <div class="feature-content">
+                    <h3>Dedicated Teachers</h3>
+                    <p>Our passionate educators are committed to bringing out the best in every child through patient guidance and encouragement.</p>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">📖</div>
+                <div class="feature-content">
+                    <h3>Strong Academic Foundation</h3>
+                    <p>We build essential literacy and numeracy skills that prepare children for academic success in their future education.</p>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🌱</div>
+                <div class="feature-content">
+                    <h3>Character Development</h3>
+                    <p>Beyond academics, we instill values like respect, honesty, and responsibility that shape well-rounded individuals.</p>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-content">
+                    <h3>Individual Attention</h3>
+                    <p>Every child receives personalized support to help them learn at their own pace and reach their full potential.</p>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🏫</div>
+                <div class="feature-content">
+                    <h3>Structured Learning</h3>
+                    <p>A well-organized curriculum balanced with engaging activities keeps children motivated and excited about school.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities section-reveal" id="facilities">
+        <div class="facilities-inner">
+            <h2>Our Learning Spaces</h2>
+            <div class="facilities-showcase">
+                <div class="facility-item">
+                    <!-- Replace 'classroom.jpg' with your actual classroom image -->
+                    <img src="classroom.jpg" alt="Bright Classrooms" class="facility-bg-image">
+                    <div class="facility-caption">
+                        <h3>Bright Classrooms</h3>
+                        <p>Spacious, well-lit classrooms equipped with learning materials that inspire curiosity and engagement</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item">
+                    <!-- Replace 'playground.jpg' with your actual playground image -->
+                    <img src="playground.jpg" alt="Play Areas" class="facility-bg-image">
+                    <div class="facility-caption">
+                        <h3>Play Areas</h3>
+                        <p>Safe outdoor spaces where children develop motor skills, socialize, and enjoy active play</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item">
+                    <!-- Replace 'activities.jpg' with your actual activity space image -->
+                    <img src="activities.jpg" alt="Activity Spaces" class="facility-bg-image">
+                    <div class="facility-caption">
+                        <h3>Activity Spaces</h3>
+                        <p>Designated areas for arts, crafts, and creative expression that bring learning to life</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities & Events Section -->
+    <section class="activities section-reveal">
+        <h2>Activities & Events</h2>
+        <p class="activities-intro">Beyond the classroom, we create memorable experiences that build confidence, celebrate diversity, and bring our school community together throughout the year.</p>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-image">
+                    <!-- Replace 'activity-cultural-day.jpg' with your actual image or remove the img tag to keep the emoji -->
+                    <img src="activity-cultural-day.jpg" alt="Cultural Day" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="activity-icon" style="display: none;">🎭</div>
+                </div>
+                <div class="activity-content">
+                    <h3>Cultural Day</h3>
+                    <p>Students celebrate Nigeria's rich cultural heritage through traditional attire, music, dance, and storytelling that honor our diverse backgrounds.</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-image">
+                    <!-- Replace 'activity-sports.jpg' with your actual image -->
+                    <img src="activity-sports.jpg" alt="Inter-House Sports" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="activity-icon" style="display: none;">🏃</div>
+                </div>
+                <div class="activity-content">
+                    <h3>Inter-House Sports</h3>
+                    <p>Exciting athletic competitions foster teamwork, sportsmanship, and healthy competition as students represent their houses with pride.</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-image">
+                    <!-- Replace 'activity-arts.jpg' with your actual image -->
+                    <img src="activity-arts.jpg" alt="Arts & Crafts Exhibition" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="activity-icon" style="display: none;">🎨</div>
+                </div>
+                <div class="activity-content">
+                    <h3>Arts & Crafts Exhibition</h3>
+                    <p>Children showcase their creativity and artistic talents through displays of paintings, drawings, and handmade crafts for family and friends.</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-image">
+                    <!-- Replace 'activity-reading.jpg' with your actual image -->
+                    <img src="activity-reading.jpg" alt="Reading Week" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="activity-icon" style="display: none;">📚</div>
+                </div>
+                <div class="activity-content">
+                    <h3>Reading Week</h3>
+                    <p>Special activities, book fairs, and storytelling sessions inspire a lifelong love of reading and expand young imaginations.</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-image">
+                    <!-- Replace 'activity-concert.jpg' with your actual image -->
+                    <img src="activity-concert.jpg" alt="End-of-Year Concert" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="activity-icon" style="display: none;">🎄</div>
+                </div>
+                <div class="activity-content">
+                    <h3>End-of-Year Concert</h3>
+                    <p>Students perform songs, dances, and skits for parents in a joyful celebration of the school year's achievements and memories.</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-image">
+                    <!-- Replace 'activity-graduation.jpg' with your actual image -->
+                    <img src="activity-graduation.jpg" alt="Graduation Ceremony" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="activity-icon" style="display: none;">🎓</div>
+                </div>
+                <div class="activity-content">
+                    <h3>Graduation Ceremony</h3>
+                    <p>We honor our graduating students with a memorable ceremony that marks their transition to the next stage of their educational journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-Contact CTA Section -->
+    <section class="pre-contact-cta section-reveal">
+        <h2>Ready to Give Your Child<br>the Best Start?</h2>
+        <p>Visit our campus in Bogije and see firsthand why parents trust Debsteph Hall School with their children's education.</p>
+        <a href="#contact" class="cta-primary-button">
+            Schedule a School Visit
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-reveal" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-content">
+                            <h3>Address</h3>
+                            <p>Bogije, Block 1, Road 6, Flourish Hall Street<br>Lekki-Epe Expressway, Ibeju-Lekki, Lagos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-item-content">
+                            <h3>Phone & WhatsApp</h3>
+                            <p><a href="tel:08030937003">0803 093 7003</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-item-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:debstephhallschool@gmail.com">debstephhallschool@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-item-content">
+                            <h3>Instagram</h3>
+                            <p><a href="https://instagram.com/debstephhallschool" target="_blank">@debstephhallschool</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-stats">
+            <div class="footer-stat">
+                <div class="footer-stat-number">5+</div>
+                <div class="footer-stat-label">Years of Excellence</div>
+            </div>
+            <div class="footer-stat">
+                <div class="footer-stat-number">500+</div>
+                <div class="footer-stat-label">Students Taught</div>
+            </div>
+            <div class="footer-stat">
+                <div class="footer-stat-number">3</div>
+                <div class="footer-stat-label">Programs Offered</div>
+            </div>
+        </div>
+        
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/debstephhallschool" target="_blank">📱</a>
+                <a href="mailto:debstephhallschool@gmail.com">📧</a>
+                <a href="tel:08030937003">📞</a>
+            </div>
+            
+            <div class="copyright">
+                © 2025 Debsteph Hall School. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Background image rotation
+        let currentBgIndex = 0;
+        const backgrounds = document.querySelectorAll('.hero-bg');
+        
+        function rotateBackground() {
+            backgrounds[currentBgIndex].classList.remove('active');
+            currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+            backgrounds[currentBgIndex].classList.add('active');
+        }
+        
+        // Change background every 5 seconds
+        setInterval(rotateBackground, 5000);
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on scroll
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const parallaxElements = document.querySelectorAll('.parallax-section');
+            
+            parallaxElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const elementTop = rect.top + scrollY;
+                const scrollPercent = (scrollY - elementTop + window.innerHeight) / (rect.height + window.innerHeight);
+                
+                if (scrollPercent >= 0 && scrollPercent <= 1) {
+                    const translateY = (scrollPercent - 0.5) * 50;
+                    el.style.transform = `translateY(${translateY}px)`;
+                }
+            });
+            
+            lastScrollY = scrollY;
+        });
+    </script>
+</body>
+</html>
