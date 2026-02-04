@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Visit - Debsteph Hall School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #C1292E;
+            --dark-grey: #2A2A2A;
+            --medium-grey: #4A4A4A;
+            --light-grey: #E8E8E8;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --success: #2ECC71;
+            --error: #E74C3C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark-grey);
+            background: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: var(--red);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .back-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .form-hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--red) 0%, #A02228 100%);
+            padding: 10rem 5% 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .form-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.8;
+        }
+
+        /* Form Container */
+        .form-container {
+            max-width: 900px;
+            margin: -4rem auto 6rem;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form Steps */
+        .form-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .form-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--light-grey);
+            z-index: 0;
+        }
+
+        .step-progress {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width 0.4s ease;
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--light-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--medium-grey);
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: var(--red);
+            border-color: var(--red);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .step.completed .step-number {
+            background: var(--success);
+            border-color: var(--success);
+            color: var(--white);
+        }
+
+        .step-label {
+            font-size: 0.85rem;
+            color: var(--medium-grey);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .step.active .step-label {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* Form Sections */
+        .form-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            color: var(--dark-grey);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-section-description {
+            color: var(--medium-grey);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        /* Form Groups */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-grey);
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--red);
+            margin-left: 0.2rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid var(--light-grey);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--dark-grey);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(193, 41, 46, 0.1);
+        }
+
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error {
+            border-color: var(--error);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Checkbox Group */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--red);
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        /* Date and Time Selection */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 0.9rem;
+            border: 2px solid var(--light-grey);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            background: var(--white);
+        }
+
+        .time-slot:hover {
+            border-color: var(--red);
+            background: rgba(193, 41, 46, 0.05);
+        }
+
+        .time-slot.selected {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+
+        /* Form Navigation Buttons */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-grey);
+        }
+
+        .btn {
+            padding: 0.9rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--red);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(193, 41, 46, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #A02228;
+            box-shadow: 0 4px 12px rgba(193, 41, 46, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: var(--light-grey);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--medium-grey);
+            border: 2px solid var(--light-grey);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--medium-grey);
+            color: var(--dark-grey);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-message h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--dark-grey);
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            color: var(--medium-grey);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(193, 41, 46, 0.05);
+            border-left: 4px solid var(--red);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .info-box h3 {
+            font-size: 1.1rem;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p {
+            color: var(--medium-grey);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info-box ul {
+            margin-top: 0.8rem;
+            margin-left: 1.5rem;
+            color: var(--medium-grey);
+        }
+
+        .info-box li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Contact Info Sidebar */
+        .contact-sidebar {
+            background: var(--off-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-sidebar h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--dark-grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--medium-grey);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .contact-item-content p {
+            color: var(--dark-grey);
+            font-size: 1rem;
+        }
+
+        .contact-item-content a {
+            color: var(--dark-grey);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--red);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form-steps {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .form-steps::before {
+                display: none;
+            }
+
+            .step {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+            .step-progress {
+                display: none;
+            }
+
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+
+            .form-navigation {
+                flex-direction: column-reverse;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Debsteph Hall School Logo" class="logo-image">
+                <span><span style="text-transform: uppercase;">Debsteph</span> Hall School</span>
+            </a>
+            <a href="index.html" class="back-link">
+                <span>←</span> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="form-hero">
+        <div class="form-hero-content">
+            <h1>Schedule Your Visit</h1>
+            <p>Take the first step in your child's educational journey. Fill out this form and we'll be in touch to confirm your visit.</p>
+        </div>
+    </section>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <div class="form-card">
+            <!-- Progress Steps -->
+            <div class="form-steps">
+                <div class="step-progress" id="stepProgress"></div>
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Parent Info</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Child Details</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Visit Details</div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="enquiryForm">
+                <!-- Step 1: Parent Information -->
+                <div class="form-section active" data-section="1">
+                    <h2>Parent/Guardian Information</h2>
+                    <p class="form-section-description">Let us know who we'll be speaking with</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentFirstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="parentFirstName" name="parentFirstName" required>
+                            <div class="error-message" id="parentFirstNameError">Please enter your first name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentLastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="parentLastName" name="parentLastName" required>
+                            <div class="error-message" id="parentLastNameError">Please enter your last name</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message" id="emailError">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="e.g., 0803 093 7003" required>
+                            <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="Street address, City, State">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="relationship">Relationship to Child <span class="required">*</span></label>
+                        <select id="relationship" name="relationship" required>
+                            <option value="">Select relationship</option>
+                            <option value="mother">Mother</option>
+                            <option value="father">Father</option>
+                            <option value="guardian">Guardian</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="relationshipError">Please select your relationship</div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Child Information -->
+                <div class="form-section" data-section="2">
+                    <h2>Child Information</h2>
+                    <p class="form-section-description">Tell us about your child</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childFirstName">Child's First Name <span class="required">*</span></label>
+                            <input type="text" id="childFirstName" name="childFirstName" required>
+                            <div class="error-message" id="childFirstNameError">Please enter child's first name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="childLastName">Child's Last Name <span class="required">*</span></label>
+                            <input type="text" id="childLastName" name="childLastName" required>
+                            <div class="error-message" id="childLastNameError">Please enter child's last name</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childAge">Child's Age <span class="required">*</span></label>
+                            <input type="number" id="childAge" name="childAge" min="2" max="12" required>
+                            <div class="error-message" id="childAgeError">Please enter child's age (2-12)</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            <div class="error-message" id="dateOfBirthError">Please enter date of birth</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programInterest">Program of Interest <span class="required">*</span></label>
+                        <select id="programInterest" name="programInterest" required>
+                            <option value="">Select a program</option>
+                            <option value="preschool">Pre-school (Ages 2-3)</option>
+                            <option value="nursery">Nursery (Ages 4-5)</option>
+                            <option value="primary">Primary (Ages 6-12)</option>
+                        </select>
+                        <div class="error-message" id="programInterestError">Please select a program</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currentSchool">Current School (if applicable)</label>
+                        <input type="text" id="currentSchool" name="currentSchool" placeholder="Name of current school">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Special Needs or Considerations</label>
+                        <textarea id="specialNeeds" name="specialNeeds" placeholder="Please share any information that would help us prepare for your visit (allergies, medical conditions, learning differences, etc.)"></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 3: Visit Details -->
+                <div class="form-section" data-section="3">
+                    <h2>Schedule Your Visit</h2>
+                    <p class="form-section-description">Choose your preferred date and time</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="visitDate">Preferred Visit Date <span class="required">*</span></label>
+                            <input type="date" id="visitDate" name="visitDate" required>
+                            <div class="error-message" id="visitDateError">Please select a visit date</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="alternateDate">Alternate Date</label>
+                            <input type="date" id="alternateDate" name="alternateDate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Time Slot <span class="required">*</span></label>
+                        <div class="time-slots">
+                            <div class="time-slot" data-time="9:00 AM - 10:30 AM">9:00 AM - 10:30 AM</div>
+                            <div class="time-slot" data-time="11:00 AM - 12:30 PM">11:00 AM - 12:30 PM</div>
+                            <div class="time-slot" data-time="2:00 PM - 3:30 PM">2:00 PM - 3:30 PM</div>
+                            <div class="time-slot" data-time="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</div>
+                        </div>
+                        <input type="hidden" id="timeSlot" name="timeSlot">
+                        <div class="error-message" id="timeSlotError">Please select a time slot</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What would you like to see during your visit?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tourClassrooms" name="visitInterests" value="classrooms">
+                                <label for="tourClassrooms">Tour Classrooms</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="meetTeachers" name="visitInterests" value="teachers">
+                                <label for="meetTeachers">Meet Teachers</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="seeFacilities" name="visitInterests" value="facilities">
+                                <label for="seeFacilities">See Facilities</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="discussCurriculum" name="visitInterests" value="curriculum">
+                                <label for="discussCurriculum">Discuss Curriculum</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="admissionInfo" name="visitInterests" value="admission">
+                                <label for="admissionInfo">Admission Info</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="feesInfo" name="visitInterests" value="fees">
+                                <label for="feesInfo">Fees & Payment</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hearAbout">How did you hear about us?</label>
+                        <select id="hearAbout" name="hearAbout">
+                            <option value="">Select an option</option>
+                            <option value="google">Google Search</option>
+                            <option value="social">Social Media</option>
+                            <option value="friend">Friend/Family Referral</option>
+                            <option value="driving">Driving Past</option>
+                            <option value="flyer">Flyer/Advertisement</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalComments">Additional Comments or Questions</label>
+                        <textarea id="additionalComments" name="additionalComments" placeholder="Is there anything else you'd like us to know or any questions you have?"></textarea>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>What to Expect</h3>
+                        <p>During your visit, you will:</p>
+                        <ul>
+                            <li>Tour our facilities and learning spaces</li>
+                            <li>Meet with our experienced educators</li>
+                            <li>Learn about our curriculum and teaching approach</li>
+                            <li>Ask questions about enrollment and fees</li>
+                            <li>Experience the warm, nurturing atmosphere of Debsteph Hall</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h2>Visit Scheduled Successfully!</h2>
+                    <p>Thank you for your interest in Debsteph Hall School. We've received your enquiry and will contact you within 24 hours to confirm your visit details.</p>
+                    <p style="margin-bottom: 2rem;">A confirmation email has been sent to <strong id="confirmEmail"></strong></p>
+                    <a href="index.html" class="btn btn-primary">Return to Home</a>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation" id="formNavigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                        <span>←</span> Previous
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Next <span>→</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                        Submit Enquiry <span>→</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact Sidebar -->
+        <div class="contact-sidebar">
+            <h3>Need Help?</h3>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-item-content">
+                    <h4>Phone & WhatsApp</h4>
+                    <p><a href="tel:08030937003">0803 093 7003</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-item-content">
+                    <h4>Email</h4>
+                    <p><a href="mailto:debstephhallschool@gmail.com">debstephhallschool@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-item-content">
+                    <h4>Address</h4>
+                    <p>Bogije, Block 1, Road 6, Flourish Hall Street<br>Lekki-Epe Expressway, Lagos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form Navigation
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        const form = document.getElementById('enquiryForm');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const stepProgress = document.getElementById('stepProgress');
+
+        // Time slot selection
+        const timeSlots = document.querySelectorAll('.time-slot');
+        const timeSlotInput = document.getElementById('timeSlot');
+
+        timeSlots.forEach(slot => {
+            slot.addEventListener('click', function() {
+                timeSlots.forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+                timeSlotInput.value = this.dataset.time;
+                document.getElementById('timeSlotError').classList.remove('show');
+                timeSlotInput.classList.remove('error');
+            });
+        });
+
+        // Set minimum date for visit (tomorrow)
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        document.getElementById('visitDate').min = minDate;
+        document.getElementById('alternateDate').min = minDate;
+
+        // Set maximum date for child's DOB (today)
+        document.getElementById('dateOfBirth').max = today.toISOString().split('T')[0];
+
+        // Update progress bar
+        function updateProgress() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            stepProgress.style.width = progress + '%';
+        }
+
+        // Show/Hide sections
+        function showStep(step) {
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelector(`.form-section[data-section="${step}"]`).classList.add('active');
+
+            // Update step indicators
+            document.querySelectorAll('.step').forEach(stepEl => {
+                const stepNum = parseInt(stepEl.dataset.step);
+                stepEl.classList.remove('active', 'completed');
+                
+                if (stepNum === step) {
+                    stepEl.classList.add('active');
+                } else if (stepNum < step) {
+                    stepEl.classList.add('completed');
+                }
+            });
+
+            // Update buttons
+            prevBtn.style.display = step === 1 ? 'none' : 'inline-flex';
+            nextBtn.style.display = step === totalSteps ? 'none' : 'inline-flex';
+            submitBtn.style.display = step === totalSteps ? 'inline-flex' : 'none';
+
+            updateProgress();
+        }
+
+        // Validate current step
+        function validateStep(step) {
+            let isValid = true;
+            const section = document.querySelector(`.form-section[data-section="${step}"]`);
+            const requiredFields = section.querySelectorAll('[required]');
+
+            requiredFields.forEach(field => {
+                const errorMsg = document.getElementById(field.id + 'Error');
+                
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    if (errorMsg) errorMsg.classList.add('show');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                    if (errorMsg) errorMsg.classList.remove('show');
+
+                    // Email validation
+                    if (field.type === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(field.value)) {
+                            field.classList.add('error');
+                            if (errorMsg) {
+                                errorMsg.textContent = 'Please enter a valid email address';
+                                errorMsg.classList.add('show');
+                            }
+                            isValid = false;
+                        }
+                    }
+
+                    // Phone validation
+                    if (field.id === 'phone') {
+                        const phoneRegex = /^[0-9+\s\-()]{10,}$/;
+                        if (!phoneRegex.test(field.value)) {
+                            field.classList.add('error');
+                            if (errorMsg) {
+                                errorMsg.textContent = 'Please enter a valid phone number';
+                                errorMsg.classList.add('show');
+                            }
+                            isValid = false;
+                        }
+                    }
+
+                    // Age validation
+                    if (field.id === 'childAge') {
+                        const age = parseInt(field.value);
+                        if (age < 2 || age > 12) {
+                            field.classList.add('error');
+                            if (errorMsg) {
+                                errorMsg.textContent = 'Age must be between 2 and 12';
+                                errorMsg.classList.add('show');
+                            }
+                            isValid = false;
+                        }
+                    }
+                }
+            });
+
+            // Validate time slot on step 3
+            if (step === 3 && !timeSlotInput.value) {
+                document.getElementById('timeSlotError').classList.add('show');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Next button
+        nextBtn.addEventListener('click', function() {
+            if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Previous button
+        prevBtn.addEventListener('click', function() {
+            currentStep--;
+            showStep(currentStep);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Remove error on input
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorMsg = document.getElementById(this.id + 'Error');
+                if (errorMsg) errorMsg.classList.remove('show');
+            });
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateStep(currentStep)) {
+                // Get form data
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                // Get selected visit interests
+                const visitInterests = Array.from(document.querySelectorAll('input[name="visitInterests"]:checked'))
+                    .map(cb => cb.value);
+                data.visitInterests = visitInterests;
+                
+                // Log form data (in production, send to backend)
+                console.log('Form Data:', data);
+                
+                // Show success message
+                document.getElementById('confirmEmail').textContent = data.email;
+                document.querySelector('.form-card').style.display = 'none';
+                document.getElementById('formNavigation').style.display = 'none';
+                document.getElementById('successMessage').classList.add('show');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // In production, you would send this data to your backend
+                // Example:
+                // fetch('/api/enquiry', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(data)
+                // });
+            }
+        });
+
+        // Initialize
+        showStep(1);
+    </script>
+</body>
+</html>
