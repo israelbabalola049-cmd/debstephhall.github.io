@@ -756,7 +756,7 @@
         .footer-stats {
             display: flex;
             justify-content: center;
-            gap: 6rem;
+            gap: 4rem;
             flex-wrap: wrap;
             margin-bottom: 4rem;
             padding-bottom: 3rem;
@@ -765,6 +765,7 @@
 
         .footer-stat {
             text-align: center;
+            min-width: 200px;
         }
 
         .footer-stat-number {
@@ -915,7 +916,11 @@
             }
 
             .footer-stats {
-                gap: 3rem;
+                gap: 2rem;
+            }
+            
+            .footer-stat {
+                min-width: 150px;
             }
 
             .footer-content {
@@ -1053,11 +1058,10 @@
             <h2>Our Learning Spaces</h2>
             <div class="facilities-showcase">
                 <div class="facility-item" data-facility="classroom">
-                    <!-- Replace these URLs with your actual classroom images (3 images will rotate) -->
-                    <img src="" alt="Classroom 1" class="facility-bg-image active">
-                    <img src="IMG_8864.jpeg" alt="Classroom 2" class="facility-bg-image">
-                    <img src="IMG_E8859.jpeg" alt="Classroom 3" class="facility-bg-image">
-                    <img src="IMG_8862.jpeg" alt="Classroom 2" class="facility-bg-image">
+                    <!-- Replace these with your actual classroom images -->
+                    <img src="IMG_8864.jpeg" alt="Classroom 1" class="facility-bg-image active">
+                    <img src="IMG_E8859.jpeg" alt="Classroom 2" class="facility-bg-image">
+                    <img src="IMG_8862.jpeg" alt="Classroom 3" class="facility-bg-image">
                     <div class="facility-caption">
                         <h3>Bright Classrooms</h3>
                         <p>Spacious, well-lit classrooms equipped with learning materials that inspire curiosity and engagement</p>
@@ -1065,7 +1069,7 @@
                 </div>
                 
                 <div class="facility-item" data-facility="playground">
-                    <!-- Replace these URLs with your actual playground images (3 images will rotate) -->
+                    <!-- Replace these URLs with your actual playground images -->
                     <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200" alt="Playground 1" class="facility-bg-image active">
                     <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Playground 2" class="facility-bg-image">
                     <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Playground 3" class="facility-bg-image">
@@ -1076,7 +1080,7 @@
                 </div>
                 
                 <div class="facility-item" data-facility="activities">
-                    <!-- Replace these URLs with your actual activity space images (3 images will rotate) -->
+                    <!-- Replace these URLs with your actual activity space images -->
                     <img src="https://images.unsplash.com/photo-1595147389795-37094173bfd8?w=1200" alt="Activity Space 1" class="facility-bg-image active">
                     <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200" alt="Activity Space 2" class="facility-bg-image">
                     <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Activity Space 3" class="facility-bg-image">
@@ -1096,7 +1100,7 @@
         <div class="activities-grid">
             <div class="activity-card">
                 <div class="activity-image" data-activity="cultural">
-                    <!-- Replace these with your actual Cultural Day images (3 images will rotate) -->
+                    <!-- Your Cultural Day images will rotate here -->
                     <img src="IMG_E5480.jpeg" alt="Cultural Day 1" class="active">
                     <img src="IMG_8867.jpeg" alt="Cultural Day 2">
                     <img src="IMG_E8860.jpeg" alt="Cultural Day 3">
@@ -1111,10 +1115,10 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="sports">
-                    <!-- Replace these with your actual Sports images (3 images will rotate) -->
-                    <img src="" alt="Sports 1" class="active">
-                    <img src="" alt="Sports 2">
-                    <img src="" alt="Sports 3">
+                    <!-- Replace with your actual Sports images -->
+                    <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600" alt="Sports 1" class="active">
+                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600" alt="Sports 2">
+                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600" alt="Sports 3">
                     <div class="activity-icon" style="display: none;">🏃</div>
                 </div>
                 <div class="activity-content">
@@ -1125,8 +1129,8 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="arts">
-                    <!-- Replace these with your actual Arts images (3 images will rotate) -->
-                    <img src="" alt="Arts 1" class="active">
+                    <!-- Replace with your actual Arts images -->
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Arts 1" class="active">
                     <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Arts 2">
                     <img src="https://images.unsplash.com/photo-1596496356735-71d8db5c3e32?w=600" alt="Arts 3">
                     <div class="activity-icon" style="display: none;">🎨</div>
@@ -1139,7 +1143,7 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="reading">
-                    <!-- Replace these with your actual Reading Week images (3 images will rotate) -->
+                    <!-- Your Excursion images will rotate here -->
                     <img src="IMG_E8866.jpeg" alt="Reading 1" class="active">
                     <img src="IMG_6451.jpeg" alt="Reading 2">
                     <img src="IMG_E8865.jpeg" alt="Reading 3">
@@ -1153,10 +1157,10 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="concert">
-                    <!-- Replace these with your actual Concert images (3 images will rotate) -->
+                    <!-- Your Concert images will rotate here -->
                     <img src="IMG_E5478.jpeg" alt="Concert 1" class="active">
                     <img src="artandmusic.jpeg" alt="Concert 2">
-                    <img src="" alt="Concert 3">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600" alt="Concert 3">
                     <div class="activity-icon" style="display: none;"></div>
                 </div>
                 <div class="activity-content">
@@ -1167,11 +1171,11 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="graduation">
-                    <!-- Replace these with your actual Graduation images (3 images will rotate) -->
+                    <!-- Your Graduation images will rotate here -->
                     <img src="DSC_0602.jpeg" alt="Graduation 1" class="active">
                     <img src="IMG_E8861.jpeg" alt="Graduation 2">
                     <img src="DSC_0571.jpeg" alt="Graduation 3">
-                   <img src="IMG_6447.jpeg" alt="Graduation 4">
+                    <img src="IMG_6447.jpeg" alt="Graduation 4">
                     <div class="activity-icon" style="display: none;"></div>
                 </div>
                 <div class="activity-content">
@@ -1296,12 +1300,12 @@
                 <div class="footer-stat-label">Years of Excellence</div>
             </div>
             <div class="footer-stat">
-                <div class="footer-stat-number">100%<div>
+                <div class="footer-stat-number">100%</div>
                 <div class="footer-stat-label">Curriculum aligned with National Standards</div>
             </div>
             <div class="footer-stat">
                 <div class="footer-stat-number">95%</div>
-                <div class="footer-stat-label">Promotion rate every year<div>
+                <div class="footer-stat-label">Promotion rate every year</div>
             </div>
         </div>
         
