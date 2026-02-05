@@ -6,7 +6,12 @@
     <title>Debsteph Hall School - Where Young Minds Flourish</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=Caveat+Brush&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="IMG_8864.jpeg">
+    <link rel="preload" as="image" href="logo.jpg">
+    
     <style>
         :root {
             --red: #C1292E;
@@ -29,6 +34,13 @@
             background: var(--dark-grey);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Image optimization */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Navigation */
@@ -54,7 +66,7 @@
             align-items: center;
             gap: 1rem;
             font-family: 'Crimson Pro', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--white);
             letter-spacing: -0.02em;
@@ -101,18 +113,17 @@
             opacity: 1;
         }
 
-        /* Hero Section with Background Images */
+        /* Hero Section */
         .hero {
             min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 12rem 5% 10rem;
+            padding: 12rem 5% 8rem;
             overflow: hidden;
         }
 
-        /* Background image slideshow */
         .hero-backgrounds {
             position: absolute;
             top: 0;
@@ -138,7 +149,6 @@
             opacity: 1;
         }
 
-        /* Placeholder backgrounds - replace these URLs with your actual images */
         .hero-bg-1 {
             background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600');
         }
@@ -151,7 +161,6 @@
             background-image: url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600');
         }
 
-        /* Glassmorphism overlay */
         .hero-glass {
             position: absolute;
             top: 0;
@@ -174,66 +183,29 @@
 
         .hero h1 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
             color: var(--white);
-            line-height: 1.2;
-            margin-bottom: 2rem;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
-        }
-
-        /* Stylized "Young Minds" with decorative lines */
-        .young-minds-wrapper {
-            display: inline-flex;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .decorative-line {
-            width: 60px;
-            height: 3px;
-            background: var(--red);
-            position: relative;
-        }
-
-        .decorative-line::before,
-        .decorative-line::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--red);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .decorative-line::before {
-            left: -4px;
-        }
-
-        .decorative-line::after {
-            right: -4px;
         }
 
         .young-minds-text {
             color: var(--red);
-            position: relative;
-            display: inline-block;
-            font-family: "Crimson pro", serif;
+            font-family: "Crimson Pro", serif;
             font-weight: bolder;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.02em;
             text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
         }
 
         .hero-subtitle {
-            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--light-grey);
             font-weight: 400;
-            line-height: 1.8;
-            max-width: 750px;
-            margin: 0 auto 3rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
         }
 
         .hero-buttons {
@@ -272,7 +244,6 @@
             color: var(--white);
             border: 1.5px solid rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .hero-btn-secondary:hover {
@@ -316,7 +287,7 @@
             letter-spacing: 0.15em;
             color: var(--red);
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .welcome h2 {
@@ -330,8 +301,8 @@
         }
 
         .welcome-text {
-            font-size: 1.1rem;
-            line-height: 1.9;
+            font-size: 1.05rem;
+            line-height: 1.8;
             color: var(--medium-grey);
             margin-bottom: 1.5rem;
         }
@@ -344,7 +315,7 @@
 
         .signature-name {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--dark-grey);
             margin-bottom: 0.3rem;
@@ -362,17 +333,17 @@
 
         .programs h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             color: var(--dark-grey);
         }
 
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem 3rem;
+            gap: 3rem;
         }
 
         .program-item {
@@ -393,7 +364,7 @@
 
         .program-item h3 {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--dark-grey);
             margin-bottom: 0.8rem;
@@ -402,7 +373,7 @@
         .program-item p {
             color: var(--medium-grey);
             line-height: 1.7;
-            font-size: 1rem;
+            font-size: 0.98rem;
         }
 
         .program-age {
@@ -419,7 +390,7 @@
 
         .why-us h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 4rem;
             color: var(--dark-grey);
@@ -450,7 +421,7 @@
         }
 
         .feature-content h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--dark-grey);
             margin-bottom: 0.5rem;
@@ -459,19 +430,19 @@
         .feature-content p {
             color: var(--medium-grey);
             line-height: 1.7;
+            font-size: 0.98rem;
         }
 
         /* Activities Section */
         .activities {
             background: var(--off-white);
-            color: var(--dark-grey);
         }
 
         .activities h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             text-align: center;
             color: var(--dark-grey);
         }
@@ -479,8 +450,8 @@
         .activities-intro {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 5rem;
-            font-size: 1.1rem;
+            margin: 0 auto 4rem;
+            font-size: 1.05rem;
             color: var(--medium-grey);
             line-height: 1.8;
         }
@@ -506,7 +477,7 @@
 
         .activity-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background: var(--light-grey);
             display: flex;
             align-items: center;
@@ -522,6 +493,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
         }
@@ -531,31 +503,24 @@
         }
 
         .activity-content {
-            padding: 2rem;
-        }
-
-        .activity-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: absolute;
-            z-index: 10;
+            padding: 1.8rem;
         }
 
         .activity-card h3 {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--dark-grey);
         }
 
         .activity-card p {
             color: var(--medium-grey);
             line-height: 1.7;
-            font-size: 1rem;
+            font-size: 0.98rem;
         }
 
-        /* Pre-Contact CTA Section */
+        /* Pre-Contact CTA */
         .pre-contact-cta {
             background: var(--red);
             color: var(--white);
@@ -565,14 +530,14 @@
 
         .pre-contact-cta h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
         .pre-contact-cta p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 3rem;
             opacity: 0.95;
             max-width: 600px;
@@ -603,7 +568,6 @@
         /* Facilities Section */
         .facilities {
             background: var(--white);
-            color: var(--dark-grey);
             padding: 8rem 0;
         }
 
@@ -615,7 +579,7 @@
 
         .facilities h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 4rem;
             text-align: center;
@@ -644,6 +608,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: 0;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
@@ -663,14 +628,14 @@
 
         .facility-caption h3 {
             font-family: 'Crimson Pro', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--white);
         }
 
         .facility-caption p {
-            font-size: 1rem;
+            font-size: 0.98rem;
             opacity: 0.9;
             color: var(--white);
         }
@@ -688,7 +653,7 @@
 
         .contact-info h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
             font-weight: 700;
             color: var(--dark-grey);
             margin-bottom: 3rem;
@@ -732,7 +697,7 @@
 
         .contact-item-content p {
             color: var(--dark-grey);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .contact-item-content a {
@@ -770,7 +735,7 @@
 
         .footer-stat-number {
             font-family: 'Crimson Pro', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--red);
             line-height: 1;
@@ -778,7 +743,7 @@
         }
 
         .footer-stat-label {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--light-grey);
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -846,16 +811,12 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero-content{
-                margin-top: 15px;
-                transition: margin-top 0.3s ease-in-out;
-            }
             nav {
                 padding: 1rem 5%;
             }
 
             .logo {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .logo-image {
@@ -893,11 +854,18 @@
             }
 
             .hero {
-                height: 80vh;
+                min-height: 75vh;
+                padding: 10rem 5% 6rem;
             }
 
-            .decorative-line {
-                width: 40px;
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
             }
 
             section {
@@ -907,12 +875,15 @@
             .programs-grid,
             .features-list {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2.5rem;
             }
 
-            .contact-content {
+            .activities-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+            }
+
+            .facility-item {
+                height: 350px;
             }
 
             .footer-stats {
@@ -921,6 +892,10 @@
             
             .footer-stat {
                 min-width: 150px;
+            }
+
+            .footer-stat-number {
+                font-size: 2rem;
             }
 
             .footer-content {
@@ -933,12 +908,6 @@
                 gap: 1rem;
             }
         }
-
-        /* Parallax Effect */
-        .parallax-section {
-            transform: translateZ(0);
-            will-change: transform;
-        }
     </style>
 </head>
 <body>
@@ -946,7 +915,7 @@
     <nav>
         <div class="nav-content">
             <div class="logo">
-                <img src="logo.jpg" alt="Debsteph Hall School Logo" class="logo-image">
+                <img src="logo.jpg" alt="Debsteph Hall School Logo" class="logo-image" loading="eager">
                 <span><span style="text-transform: uppercase;">Debsteph Hall School</span></span>
             </div>
             <ul class="nav-links">
@@ -963,25 +932,20 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Alternating Backgrounds -->
+    <!-- Hero Section -->
     <section class="hero">
-        <!-- Background image slideshow -->
         <div class="hero-backgrounds">
             <div class="hero-bg hero-bg-1 active"></div>
             <div class="hero-bg hero-bg-2"></div>
             <div class="hero-bg hero-bg-3"></div>
         </div>
         
-        <!-- Glassmorphism overlay -->
         <div class="hero-glass"></div>
         
         <div class="hero-content">
             <h1>
-                <div>
-                    
-                </div>
-                    <span class="young-minds-text">Quality education</span>
-                     in a safe and nurturing environment.
+                <span class="young-minds-text">Quality education</span>
+                in a safe and nurturing environment.
             </h1>
             <p class="hero-subtitle">Welcome to Debsteph Hall School—a nurturing space where children discover the joy of learning and grow into confident, capable individuals.</p>
             
@@ -1018,9 +982,16 @@
     </section>
 
     <!-- Programs Section -->
-    <section class="programs section-reveal parallax-section" id="programs">
+    <section class="programs section-reveal" id="programs">
         <h2>Our Programs</h2>
         <div class="programs-grid">
+            <div class="program-item">
+                <div class="program-icon">👶</div>
+                <h3>Crèche</h3>
+                <p>Our crèche provides a safe, warm, and stimulating environment for infants and toddlers with trained caregivers who foster early development through play-based learning.</p>
+                <div class="program-age">Ages 3 months - 2 years</div>
+            </div>
+            
             <div class="program-item">
                 <div class="program-icon">🎨</div>
                 <h3>Pre-school</h3>
@@ -1048,6 +1019,13 @@
                 <p>We offer diverse activities including music, arts, sports, and outdoor exploration to foster creativity, teamwork, and well-rounded development for every child.</p>
                 <div class="program-age">All ages</div>
             </div>
+            
+            <div class="program-item">
+                <div class="program-icon">📖</div>
+                <h3>After-School Tutoring</h3>
+                <p>Our after-school program provides academic support and homework assistance in a structured environment, helping students reinforce lessons and excel in their studies.</p>
+                <div class="program-age">Ages 6-12</div>
+            </div>
         </div>
     </section>
 
@@ -1058,10 +1036,9 @@
             <h2>Our Learning Spaces</h2>
             <div class="facilities-showcase">
                 <div class="facility-item" data-facility="classroom">
-                    <!-- Replace these with your actual classroom images -->
-                    <img src="IMG_8864.jpeg" alt="Classroom 1" class="facility-bg-image active">
-                    <img src="IMG_E8859.jpeg" alt="Classroom 2" class="facility-bg-image">
-                    <img src="IMG_8862.jpeg" alt="Classroom 3" class="facility-bg-image">
+                    <img src="IMG_8864.jpeg" alt="Classroom 1" class="facility-bg-image active" loading="lazy">
+                    <img src="IMG_E8859.jpeg" alt="Classroom 2" class="facility-bg-image" loading="lazy">
+                    <img src="IMG_8862.jpeg" alt="Classroom 3" class="facility-bg-image" loading="lazy">
                     <div class="facility-caption">
                         <h3>Bright Classrooms</h3>
                         <p>Spacious, well-lit classrooms equipped with learning materials that inspire curiosity and engagement</p>
@@ -1069,10 +1046,9 @@
                 </div>
                 
                 <div class="facility-item" data-facility="playground">
-                    <!-- Replace these URLs with your actual playground images -->
-                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200" alt="Playground 1" class="facility-bg-image active">
-                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Playground 2" class="facility-bg-image">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Playground 3" class="facility-bg-image">
+                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200" alt="Playground 1" class="facility-bg-image active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Playground 2" class="facility-bg-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Playground 3" class="facility-bg-image" loading="lazy">
                     <div class="facility-caption">
                         <h3>Play Areas</h3>
                         <p>Safe outdoor spaces where children develop motor skills, socialize, and enjoy active play</p>
@@ -1080,10 +1056,9 @@
                 </div>
                 
                 <div class="facility-item" data-facility="activities">
-                    <!-- Replace these URLs with your actual activity space images -->
-                    <img src="https://images.unsplash.com/photo-1595147389795-37094173bfd8?w=1200" alt="Activity Space 1" class="facility-bg-image active">
-                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200" alt="Activity Space 2" class="facility-bg-image">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Activity Space 3" class="facility-bg-image">
+                    <img src="https://images.unsplash.com/photo-1595147389795-37094173bfd8?w=1200" alt="Activity Space 1" class="facility-bg-image active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200" alt="Activity Space 2" class="facility-bg-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Activity Space 3" class="facility-bg-image" loading="lazy">
                     <div class="facility-caption">
                         <h3>Activity Spaces</h3>
                         <p>Designated areas for arts, crafts, and creative expression that bring learning to life</p>
@@ -1100,12 +1075,10 @@
         <div class="activities-grid">
             <div class="activity-card">
                 <div class="activity-image" data-activity="cultural">
-                    <!-- Your Cultural Day images will rotate here -->
-                    <img src="IMG_E5480.jpeg" alt="Cultural Day 1" class="active">
-                    <img src="IMG_8867.jpeg" alt="Cultural Day 2">
-                    <img src="IMG_E8860.jpeg" alt="Cultural Day 3">
-                    <img src="IMG_E8863.jpeg" alt="Cultural Day 4">
-                    <div class="activity-icon" style="display: none;"></div>
+                    <img src="IMG_E5480.jpeg" alt="Cultural Day 1" class="active" loading="lazy">
+                    <img src="IMG_8867.jpeg" alt="Cultural Day 2" loading="lazy">
+                    <img src="IMG_E8860.jpeg" alt="Cultural Day 3" loading="lazy">
+                    <img src="IMG_E8863.jpeg" alt="Cultural Day 4" loading="lazy">
                 </div>
                 <div class="activity-content">
                     <h3>Cultural Day</h3>
@@ -1115,11 +1088,9 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="sports">
-                    <!-- Replace with your actual Sports images -->
-                    <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600" alt="Sports 1" class="active">
-                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600" alt="Sports 2">
-                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600" alt="Sports 3">
-                    <div class="activity-icon" style="display: none;">🏃</div>
+                    <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600" alt="Sports 1" class="active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600" alt="Sports 2" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600" alt="Sports 3" loading="lazy">
                 </div>
                 <div class="activity-content">
                     <h3>Inter-House Sports</h3>
@@ -1129,11 +1100,9 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="arts">
-                    <!-- Replace with your actual Arts images -->
-                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Arts 1" class="active">
-                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Arts 2">
-                    <img src="https://images.unsplash.com/photo-1596496356735-71d8db5c3e32?w=600" alt="Arts 3">
-                    <div class="activity-icon" style="display: none;">🎨</div>
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Arts 1" class="active" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Arts 2" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1596496356735-71d8db5c3e32?w=600" alt="Arts 3" loading="lazy">
                 </div>
                 <div class="activity-content">
                     <h3>Arts & Crafts Exhibition</h3>
@@ -1143,25 +1112,21 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="reading">
-                    <!-- Your Excursion images will rotate here -->
-                    <img src="IMG_E8866.jpeg" alt="Reading 1" class="active">
-                    <img src="IMG_6451.jpeg" alt="Reading 2">
-                    <img src="IMG_E8865.jpeg" alt="Reading 3">
-                    <div class="activity-icon" style="display: none;"></div>
+                    <img src="IMG_E8866.jpeg" alt="Reading 1" class="active" loading="lazy">
+                    <img src="IMG_6451.jpeg" alt="Reading 2" loading="lazy">
+                    <img src="IMG_E8865.jpeg" alt="Reading 3" loading="lazy">
                 </div>
                 <div class="activity-content">
-                    <h3>Excursion and field trips</h3>
-                    <p>Exciting educational visits where students learn by exploring. </p>
+                    <h3>Excursion and Field Trips</h3>
+                    <p>Exciting educational visits where students learn by exploring.</p>
                 </div>
             </div>
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="concert">
-                    <!-- Your Concert images will rotate here -->
-                    <img src="IMG_E5478.jpeg" alt="Concert 1" class="active">
-                    <img src="artandmusic.jpeg" alt="Concert 2">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600" alt="Concert 3">
-                    <div class="activity-icon" style="display: none;"></div>
+                    <img src="IMG_E5478.jpeg" alt="Concert 1" class="active" loading="lazy">
+                    <img src="artandmusic.jpeg" alt="Concert 2" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600" alt="Concert 3" loading="lazy">
                 </div>
                 <div class="activity-content">
                     <h3>End-of-Year Concert</h3>
@@ -1171,12 +1136,10 @@
             
             <div class="activity-card">
                 <div class="activity-image" data-activity="graduation">
-                    <!-- Your Graduation images will rotate here -->
-                    <img src="DSC_0602.jpeg" alt="Graduation 1" class="active">
-                    <img src="IMG_E8861.jpeg" alt="Graduation 2">
-                    <img src="DSC_0571.jpeg" alt="Graduation 3">
-                    <img src="IMG_6447.jpeg" alt="Graduation 4">
-                    <div class="activity-icon" style="display: none;"></div>
+                    <img src="DSC_0602.jpeg" alt="Graduation 1" class="active" loading="lazy">
+                    <img src="IMG_E8861.jpeg" alt="Graduation 2" loading="lazy">
+                    <img src="DSC_0571.jpeg" alt="Graduation 3" loading="lazy">
+                    <img src="IMG_6447.jpeg" alt="Graduation 4" loading="lazy">
                 </div>
                 <div class="activity-content">
                     <h3>Graduation Ceremony</h3>
@@ -1185,7 +1148,8 @@
             </div>
         </div>
     </section>
-     <!-- Why Us Section -->
+    
+    <!-- Why Us Section -->
     <section class="why-us section-reveal">
         <h2>Why Parents Choose<br>Debsteph Hall</h2>
         <div class="features-list">
@@ -1238,7 +1202,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Pre-Contact CTA Section -->
     <section class="pre-contact-cta section-reveal">
@@ -1340,7 +1303,6 @@
             backgrounds[currentBgIndex].classList.add('active');
         }
         
-        // Change background every 5 seconds
         setInterval(rotateBackground, 5000);
 
         // Activity cards image rotation
@@ -1348,7 +1310,7 @@
             const activityContainers = document.querySelectorAll('.activity-image[data-activity]');
             
             activityContainers.forEach(container => {
-                const images = container.querySelectorAll('img:not(.activity-icon)');
+                const images = container.querySelectorAll('img');
                 if (images.length <= 1) return;
                 
                 let currentIndex = 0;
@@ -1357,7 +1319,7 @@
                     images[currentIndex].classList.remove('active');
                     currentIndex = (currentIndex + 1) % images.length;
                     images[currentIndex].classList.add('active');
-                }, 4000); // Change every 4 seconds
+                }, 4000);
             });
         }
 
@@ -1375,15 +1337,14 @@
                     images[currentIndex].classList.remove('active');
                     currentIndex = (currentIndex + 1) % images.length;
                     images[currentIndex].classList.add('active');
-                }, 4500); // Change every 4.5 seconds
+                }, 4500);
             });
         }
 
-        // Initialize rotations
         rotateActivityImages();
         rotateFacilityImages();
 
-        // Hamburger menu toggle
+        // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
@@ -1391,14 +1352,13 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
 
-        // Scroll reveal animation
+        // Scroll reveal
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -100px 0px'
@@ -1428,27 +1388,6 @@
                     });
                 }
             });
-        });
-
-        // Parallax effect on scroll
-        let lastScrollY = window.scrollY;
-        
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const parallaxElements = document.querySelectorAll('.parallax-section');
-            
-            parallaxElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const elementTop = rect.top + scrollY;
-                const scrollPercent = (scrollY - elementTop + window.innerHeight) / (rect.height + window.innerHeight);
-                
-                if (scrollPercent >= 0 && scrollPercent <= 1) {
-                    const translateY = (scrollPercent - 0.5) * 50;
-                    el.style.transform = `translateY(${translateY}px)`;
-                }
-            });
-            
-            lastScrollY = scrollY;
         });
     </script>
 </body>
