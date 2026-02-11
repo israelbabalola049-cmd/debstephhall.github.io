@@ -36,6 +36,10 @@
             overflow-x: hidden;
         }
 
+        body.modal-open {
+            overflow: hidden;
+        }
+
         /* Image optimization */
         img {
             max-width: 100%;
@@ -181,6 +185,35 @@
             z-index: 2;
         }
 
+        @keyframes subtleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% {
+                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                text-shadow: 2px 2px 4px rgba(193, 41, 46, 0.3), 2px 2px 0px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .hero h1 {
             font-family: 'Crimson Pro', serif;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -189,6 +222,8 @@
             line-height: 1.25;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards, subtleFloat 6s ease-in-out 2s infinite;
         }
 
         .young-minds-text {
@@ -197,6 +232,8 @@
             font-weight: bolder;
             letter-spacing: 0.02em;
             text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            animation: gentleGlow 4s ease-in-out infinite;
         }
 
         .hero-subtitle {
@@ -206,6 +243,8 @@
             line-height: 1.7;
             max-width: 700px;
             margin: 0 auto 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.5s forwards;
         }
 
         .hero-buttons {
@@ -226,6 +265,15 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            opacity: 0;
+        }
+
+        .hero-btn:first-child {
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .hero-btn:last-child {
+            animation: fadeInUp 0.8s ease-out 1s forwards;
         }
 
         .hero-btn-primary {
@@ -237,6 +285,7 @@
         .hero-btn-primary:hover {
             background: #A02228;
             box-shadow: 0 3px 12px rgba(193, 41, 46, 0.25);
+            transform: translateY(-2px);
         }
 
         .hero-btn-secondary {
@@ -249,6 +298,7 @@
         .hero-btn-secondary:hover {
             background: rgba(255, 255, 255, 0.18);
             border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
         }
 
         /* Section Styles */
@@ -468,6 +518,7 @@
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid var(--light-grey);
+            cursor: pointer;
         }
 
         .activity-card:hover {
@@ -567,38 +618,95 @@
 
         /* Facilities Section */
         .facilities {
-            background: var(--white);
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
             padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .facilities::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
         }
 
         .facilities-inner {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
+            position: relative;
+            z-index: 1;
         }
 
         .facilities h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
             font-weight: 700;
-            margin-bottom: 4rem;
+            margin-bottom: 1.5rem;
             text-align: center;
             color: var(--dark-grey);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .facilities h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), #A02228);
+            border-radius: 2px;
+        }
+
+        .facilities-intro {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 5rem;
+            font-size: 1.1rem;
+            color: var(--medium-grey);
+            line-height: 1.8;
+            padding-top: 2rem;
         }
 
         .facilities-showcase {
             display: grid;
-            gap: 2rem;
+            gap: 3rem;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .facility-item {
             position: relative;
-            height: 450px;
-            background: var(--light-grey);
-            border-radius: 16px;
+            height: 500px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
             display: flex;
             align-items: flex-end;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .facility-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(193, 41, 46, 0.15);
         }
 
         .facility-bg-image {
@@ -611,33 +719,100 @@
             object-position: center;
             z-index: 0;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 1.5s ease-in-out, transform 0.4s ease;
+        }
+
+        .facility-item:hover .facility-bg-image.active {
+            transform: scale(1.05);
         }
 
         .facility-bg-image.active {
             opacity: 1;
         }
 
+        .facility-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+
+        .facility-item:hover .facility-overlay {
+            background: linear-gradient(to top, rgba(42, 42, 42, 0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+        }
+
         .facility-caption {
-            padding: 2.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 3rem;
             width: 100%;
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .facility-item:hover .facility-caption {
+            transform: translateY(0);
+        }
+
+        .facility-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .facility-item:hover .facility-icon {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .facility-caption h3 {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
         }
 
         .facility-caption p {
-            font-size: 0.98rem;
-            opacity: 0.9;
+            font-size: 1.05rem;
+            opacity: 0.95;
             color: var(--white);
+            line-height: 1.7;
+            max-width: 90%;
+        }
+
+        .facility-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .facility-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .facility-stat-icon {
+            font-size: 1.2rem;
         }
 
         /* Contact Section */
@@ -708,6 +883,213 @@
 
         .contact-item-content a:hover {
             color: var(--red);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-close:hover {
+            background: var(--red);
+            color: var(--white);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .modal-image-slider {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .modal-slide.active {
+            opacity: 1;
+        }
+
+        .modal-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .modal-slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        }
+
+        .modal-slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .modal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-dot.active {
+            background: var(--white);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .modal-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            background: var(--red);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .modal-description {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--medium-grey);
+            margin-bottom: 2rem;
+        }
+
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--light-grey);
+        }
+
+        .modal-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .modal-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--red), #A02228);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .modal-feature-text {
+            flex: 1;
+        }
+
+        .modal-feature-text h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-feature-text p {
+            font-size: 0.9rem;
+            color: var(--medium-grey);
+            line-height: 1.6;
         }
 
         /* Footer */
@@ -883,7 +1265,15 @@
             }
 
             .facility-item {
-                height: 350px;
+                height: 400px;
+            }
+
+            .facility-caption {
+                padding: 2rem;
+            }
+
+            .facility-caption h3 {
+                font-size: 1.6rem;
             }
 
             .footer-stats {
@@ -906,6 +1296,22 @@
             .footer-links {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .modal {
+                padding: 1rem;
+            }
+
+            .modal-image-slider {
+                height: 250px;
+            }
+
+            .modal-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .modal-features {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1034,14 +1440,27 @@
     <section class="facilities section-reveal" id="facilities">
         <div class="facilities-inner">
             <h2>Our Learning Spaces</h2>
+            <p class="facilities-intro">Modern, purposefully designed environments where children feel inspired to explore, create, and reach their full potential every day.</p>
             <div class="facilities-showcase">
                 <div class="facility-item" data-facility="classroom">
                     <img src="IMG_8864.jpeg" alt="Classroom 1" class="facility-bg-image active" loading="lazy">
                     <img src="IMG_E8859.jpeg" alt="Classroom 2" class="facility-bg-image" loading="lazy">
                     <img src="IMG_8862.jpeg" alt="Classroom 3" class="facility-bg-image" loading="lazy">
+                    <div class="facility-overlay"></div>
                     <div class="facility-caption">
+                        <div class="facility-icon">📚</div>
                         <h3>Bright Classrooms</h3>
-                        <p>Spacious, well-lit classrooms equipped with learning materials that inspire curiosity and engagement</p>
+                        <p>Spacious, well-lit classrooms equipped with modern learning materials that inspire curiosity and engagement in every lesson</p>
+                        <div class="facility-stats">
+                            <div class="facility-stat">
+                                <span class="facility-stat-icon">✨</span>
+                                <span>Natural lighting</span>
+                            </div>
+                            <div class="facility-stat">
+                                <span class="facility-stat-icon">🎯</span>
+                                <span>Interactive learning</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1049,9 +1468,21 @@
                     <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200" alt="Playground 1" class="facility-bg-image active" loading="lazy">
                     <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Playground 2" class="facility-bg-image" loading="lazy">
                     <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Playground 3" class="facility-bg-image" loading="lazy">
+                    <div class="facility-overlay"></div>
                     <div class="facility-caption">
+                        <div class="facility-icon">🏃</div>
                         <h3>Play Areas</h3>
-                        <p>Safe outdoor spaces where children develop motor skills, socialize, and enjoy active play</p>
+                        <p>Safe outdoor spaces where children develop motor skills, socialize with friends, and enjoy active play in a secure environment</p>
+                        <div class="facility-stats">
+                            <div class="facility-stat">
+                                <span class="facility-stat-icon">🛡️</span>
+                                <span>Safety first</span>
+                            </div>
+                            <div class="facility-stat">
+                                <span class="facility-stat-icon">🌳</span>
+                                <span>Outdoor learning</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1059,9 +1490,21 @@
                     <img src="https://images.unsplash.com/photo-1595147389795-37094173bfd8?w=1200" alt="Activity Space 1" class="facility-bg-image active" loading="lazy">
                     <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200" alt="Activity Space 2" class="facility-bg-image" loading="lazy">
                     <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200" alt="Activity Space 3" class="facility-bg-image" loading="lazy">
+                    <div class="facility-overlay"></div>
                     <div class="facility-caption">
+                        <div class="facility-icon">🎨</div>
                         <h3>Activity Spaces</h3>
-                        <p>Designated areas for arts, crafts, and creative expression that bring learning to life</p>
+                        <p>Designated areas for arts, crafts, and creative expression that bring learning to life through hands-on experiences</p>
+                        <div class="facility-stats">
+                            <div class="facility-stat">
+                                <span class="facility-stat-icon">💡</span>
+                                <span>Creative zones</span>
+                            </div>
+                            <div class="facility-stat">
+                                <span class="facility-stat-icon">🎭</span>
+                                <span>Multi-purpose</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1073,7 +1516,7 @@
         <h2>Activities & Events</h2>
         <p class="activities-intro">Beyond the classroom, we create memorable experiences that build confidence, celebrate diversity, and bring our school community together throughout the year.</p>
         <div class="activities-grid">
-            <div class="activity-card">
+            <div class="activity-card" data-activity="cultural">
                 <div class="activity-image" data-activity="cultural">
                     <img src="IMG_E5480.jpeg" alt="Cultural Day 1" class="active" loading="lazy">
                     <img src="IMG_8867.jpeg" alt="Cultural Day 2" loading="lazy">
@@ -1086,7 +1529,7 @@
                 </div>
             </div>
             
-            <div class="activity-card">
+            <div class="activity-card" data-activity="sports">
                 <div class="activity-image" data-activity="sports">
                     <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600" alt="Sports 1" class="active" loading="lazy">
                     <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600" alt="Sports 2" loading="lazy">
@@ -1098,7 +1541,7 @@
                 </div>
             </div>
             
-            <div class="activity-card">
+            <div class="activity-card" data-activity="arts">
                 <div class="activity-image" data-activity="arts">
                     <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Arts 1" class="active" loading="lazy">
                     <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Arts 2" loading="lazy">
@@ -1110,7 +1553,7 @@
                 </div>
             </div>
             
-            <div class="activity-card">
+            <div class="activity-card" data-activity="reading">
                 <div class="activity-image" data-activity="reading">
                     <img src="IMG_E8866.jpeg" alt="Reading 1" class="active" loading="lazy">
                     <img src="IMG_6451.jpeg" alt="Reading 2" loading="lazy">
@@ -1122,7 +1565,7 @@
                 </div>
             </div>
             
-            <div class="activity-card">
+            <div class="activity-card" data-activity="concert">
                 <div class="activity-image" data-activity="concert">
                     <img src="IMG_E5478.jpeg" alt="Concert 1" class="active" loading="lazy">
                     <img src="artandmusic.jpeg" alt="Concert 2" loading="lazy">
@@ -1134,7 +1577,7 @@
                 </div>
             </div>
             
-            <div class="activity-card">
+            <div class="activity-card" data-activity="graduation">
                 <div class="activity-image" data-activity="graduation">
                     <img src="DSC_0602.jpeg" alt="Graduation 1" class="active" loading="lazy">
                     <img src="IMG_E8861.jpeg" alt="Graduation 2" loading="lazy">
@@ -1255,6 +1698,24 @@
         </div>
     </section>
 
+    <!-- Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-image-slider" id="modalSlider">
+                <!-- Images will be inserted here dynamically -->
+            </div>
+            <div class="modal-body">
+                <span class="modal-category" id="modalCategory">Facility</span>
+                <h2 class="modal-title" id="modalTitle">Title</h2>
+                <p class="modal-description" id="modalDescription">Description</p>
+                <div class="modal-features" id="modalFeatures">
+                    <!-- Features will be inserted here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-stats">
@@ -1293,6 +1754,264 @@
     </footer>
 
     <script>
+        // Modal data
+        const modalData = {
+            classroom: {
+                category: 'Learning Space',
+                title: 'Bright & Modern Classrooms',
+                description: 'Our thoughtfully designed classrooms provide an ideal learning environment where children can thrive. Each space is equipped with age-appropriate furniture, educational materials, and plenty of natural light to keep students engaged and comfortable throughout the day. We believe that a well-designed classroom is essential for effective learning, which is why we\'ve created spaces that balance functionality with warmth and inspiration.',
+                images: ['IMG_8864.jpeg', 'IMG_E8859.jpeg', 'IMG_8862.jpeg'],
+                features: [
+                    { icon: '☀️', title: 'Natural Lighting', text: 'Large windows provide abundant natural light, creating a bright and energizing atmosphere' },
+                    { icon: '🪑', title: 'Ergonomic Furniture', text: 'Child-sized desks and chairs designed for comfort and proper posture' },
+                    { icon: '📚', title: 'Learning Resources', text: 'Well-stocked with books, educational materials, and teaching aids' },
+                    { icon: '🎨', title: 'Interactive Displays', text: 'Colorful bulletin boards and visual aids to enhance learning' }
+                ]
+            },
+            playground: {
+                category: 'Outdoor Space',
+                title: 'Safe & Exciting Play Areas',
+                description: 'Physical activity and outdoor play are crucial components of childhood development. Our secure playground areas feature age-appropriate equipment where children can run, climb, and play freely while developing their gross motor skills, coordination, and social abilities. We maintain strict safety standards and provide adequate supervision to ensure every child can enjoy outdoor time with confidence.',
+                images: [
+                    'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200',
+                    'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200',
+                    'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200'
+                ],
+                features: [
+                    { icon: '🛡️', title: 'Safety First', text: 'All equipment meets international safety standards with soft landing surfaces' },
+                    { icon: '🎪', title: 'Age-Appropriate', text: 'Different play zones designed for various age groups and skill levels' },
+                    { icon: '👀', title: 'Full Supervision', text: 'Trained staff monitor all outdoor activities to ensure child safety' },
+                    { icon: '🌳', title: 'Shaded Areas', text: 'Covered spaces and trees provide protection from sun and rain' }
+                ]
+            },
+            activities: {
+                category: 'Creative Space',
+                title: 'Dedicated Activity Spaces',
+                description: 'Learning extends beyond traditional academics. Our specialized activity areas are designed to nurture creativity, artistic expression, and hands-on learning. From art stations to music corners, these spaces allow children to explore their interests, develop new skills, and express themselves in meaningful ways. We believe that creative activities are essential for well-rounded development and help children discover their unique talents.',
+                images: [
+                    'https://images.unsplash.com/photo-1595147389795-37094173bfd8?w=1200',
+                    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200',
+                    'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200'
+                ],
+                features: [
+                    { icon: '🎨', title: 'Art Stations', text: 'Equipped with paints, crafts supplies, and materials for creative projects' },
+                    { icon: '🎵', title: 'Music Corner', text: 'Musical instruments and audio equipment for rhythm and movement activities' },
+                    { icon: '🧪', title: 'Discovery Zone', text: 'Hands-on science and exploration activities to spark curiosity' },
+                    { icon: '📖', title: 'Reading Nook', text: 'Cozy library corner with age-appropriate books and comfortable seating' }
+                ]
+            },
+            cultural: {
+                category: 'School Event',
+                title: 'Cultural Day Celebration',
+                description: 'Cultural Day is one of our most vibrant and anticipated events, where students embrace and celebrate the rich diversity of Nigerian heritage. Children come dressed in traditional attire from various ethnic groups, showcasing the beautiful tapestry of cultures that make up our nation. The day is filled with traditional music, dance performances, storytelling sessions, and displays of cultural artifacts. This celebration helps children develop pride in their heritage while learning to appreciate and respect different cultures. It\'s a joyful reminder that our diversity is our strength.',
+                images: ['IMG_E5480.jpeg', 'IMG_8867.jpeg', 'IMG_E8860.jpeg', 'IMG_E8863.jpeg'],
+                features: [
+                    { icon: '👘', title: 'Traditional Attire', text: 'Students showcase beautiful traditional clothing from various Nigerian cultures' },
+                    { icon: '🥁', title: 'Cultural Performances', text: 'Music, dance, and drumming celebrating our rich heritage' },
+                    { icon: '📚', title: 'Storytelling', text: 'Elders and teachers share folktales and historical narratives' },
+                    { icon: '🎭', title: 'Cultural Displays', text: 'Exhibitions of traditional arts, crafts, and artifacts' }
+                ]
+            },
+            sports: {
+                category: 'School Event',
+                title: 'Inter-House Sports Competition',
+                description: 'Our annual Inter-House Sports event brings together the entire school community in a spirit of healthy competition and athletic excellence. Students are divided into different houses and compete in various track and field events, relay races, and team sports. This event goes beyond physical fitness—it teaches valuable life lessons about teamwork, perseverance, sportsmanship, and handling both victory and defeat with grace. Parents and family members are invited to cheer on their children, creating lasting memories and strengthening our school community bonds.',
+                images: [
+                    'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600',
+                    'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600',
+                    'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600'
+                ],
+                features: [
+                    { icon: '🏃', title: 'Track & Field', text: 'Sprint races, relay events, and athletic competitions for all age groups' },
+                    { icon: '⚽', title: 'Team Sports', text: 'Football, basketball, and other collaborative sporting events' },
+                    { icon: '🏆', title: 'House Pride', text: 'Students represent their houses, building camaraderie and school spirit' },
+                    { icon: '👨‍👩‍👧', title: 'Family Event', text: 'Parents join to support and celebrate their children\'s achievements' }
+                ]
+            },
+            arts: {
+                category: 'School Event',
+                title: 'Arts & Crafts Exhibition',
+                description: 'The Arts & Crafts Exhibition is a showcase of our students\' creativity and artistic development throughout the school year. Children\'s artwork—from paintings and drawings to sculptures and handmade crafts—is displayed in a gallery-style setting where parents, family, and community members can appreciate their talents. This exhibition builds confidence as children see their work valued and celebrated. It also provides insight into their learning journey and creative expression. For many children, seeing their artwork displayed professionally is a powerful affirmation of their abilities.',
+                images: [
+                    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600',
+                    'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600',
+                    'https://images.unsplash.com/photo-1596496356735-71d8db5c3e32?w=600'
+                ],
+                features: [
+                    { icon: '🖼️', title: 'Student Gallery', text: 'Professional display of children\'s artwork in a gallery setting' },
+                    { icon: '✂️', title: 'Varied Mediums', text: 'Paintings, drawings, sculptures, and mixed media creations' },
+                    { icon: '🎨', title: 'Creative Process', text: 'Documentation showing the development of artistic skills' },
+                    { icon: '👪', title: 'Community Celebration', text: 'Family and community invited to celebrate children\'s creativity' }
+                ]
+            },
+            reading: {
+                category: 'School Event',
+                title: 'Educational Excursions & Field Trips',
+                description: 'Learning comes alive when children step outside the classroom. Our carefully planned excursions and field trips take students to museums, cultural centers, nature reserves, and other educational destinations where abstract concepts become tangible experiences. These trips are aligned with our curriculum, providing real-world context to classroom lessons. Whether exploring historical sites, observing wildlife, or visiting community institutions, these experiences broaden children\'s horizons, stimulate curiosity, and create memorable learning moments that last a lifetime.',
+                images: ['IMG_E8866.jpeg', 'IMG_6451.jpeg', 'IMG_E8865.jpeg'],
+                features: [
+                    { icon: '🏛️', title: 'Educational Venues', text: 'Visits to museums, cultural centers, and historical sites' },
+                    { icon: '🌿', title: 'Nature Exploration', text: 'Outdoor learning experiences in parks, gardens, and nature reserves' },
+                    { icon: '📝', title: 'Curriculum-Aligned', text: 'Each trip reinforces classroom learning with hands-on experiences' },
+                    { icon: '🚌', title: 'Safe Travel', text: 'Well-organized transportation with proper supervision and safety measures' }
+                ]
+            },
+            concert: {
+                category: 'School Event',
+                title: 'End-of-Year Concert & Celebration',
+                description: 'Our End-of-Year Concert is a spectacular celebration that brings the entire school community together to honor the achievements and growth of our students. Children perform songs, dances, drama sketches, and poetry recitations they\'ve learned throughout the year. The concert showcases not just their artistic talents, but also their confidence, teamwork, and ability to perform in front of an audience. It\'s a joyful culmination of the school year, filled with pride, laughter, and sometimes happy tears as we celebrate how much our children have accomplished and grown.',
+                images: [
+                    'IMG_E5478.jpeg',
+                    'artandmusic.jpeg',
+                    'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600'
+                ],
+                features: [
+                    { icon: '🎤', title: 'Musical Performances', text: 'Choir performances, solo acts, and group singing showcasing musical development' },
+                    { icon: '💃', title: 'Dance Routines', text: 'Choreographed dances from various cultures and contemporary styles' },
+                    { icon: '🎭', title: 'Drama & Skits', text: 'Short plays and comedy sketches demonstrating dramatic skills' },
+                    { icon: '🎉', title: 'Year-End Celebration', text: 'Recognition of achievements and celebration of students\' growth' }
+                ]
+            },
+            graduation: {
+                category: 'School Event',
+                title: 'Graduation Ceremony',
+                description: 'The Graduation Ceremony is a milestone event that marks the successful completion of a significant phase in our students\' educational journey. Graduating students don caps and gowns, receive certificates, and are celebrated for their achievements. This formal ceremony instills a sense of accomplishment and prepares children for their transition to the next educational level. Parents share in this proud moment, witnessing the growth and development their children have experienced. The ceremony includes speeches, awards for excellence, and a procession that makes every child feel honored and valued.',
+                images: ['DSC_0602.jpeg', 'IMG_E8861.jpeg', 'DSC_0571.jpeg', 'IMG_6447.jpeg'],
+                features: [
+                    { icon: '🎓', title: 'Caps & Gowns', text: 'Traditional graduation attire making the occasion formal and memorable' },
+                    { icon: '📜', title: 'Certificates', text: 'Official recognition of academic achievement and completion' },
+                    { icon: '🏅', title: 'Awards & Recognition', text: 'Special awards for academic excellence, character, and achievement' },
+                    { icon: '👨‍👩‍👧', title: 'Family Pride', text: 'Parents celebrate this important milestone in their child\'s life' }
+                ]
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('detailModal');
+        const modalClose = document.getElementById('modalClose');
+        let modalSliderInterval;
+
+        function openModal(type) {
+            const data = modalData[type];
+            if (!data) return;
+
+            // Set content
+            document.getElementById('modalCategory').textContent = data.category;
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalDescription').textContent = data.description;
+
+            // Set images with slider
+            const slider = document.getElementById('modalSlider');
+            slider.innerHTML = '';
+            
+            data.images.forEach((img, index) => {
+                const slide = document.createElement('div');
+                slide.className = `modal-slide ${index === 0 ? 'active' : ''}`;
+                slide.innerHTML = `<img src="${img}" alt="${data.title} ${index + 1}">`;
+                slider.appendChild(slide);
+            });
+
+            // Add dots
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'modal-slider-dots';
+            data.images.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            slider.appendChild(dotsContainer);
+
+            // Add overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-slide-overlay';
+            slider.appendChild(overlay);
+
+            // Set features
+            const featuresContainer = document.getElementById('modalFeatures');
+            featuresContainer.innerHTML = '';
+            data.features.forEach(feature => {
+                const featureEl = document.createElement('div');
+                featureEl.className = 'modal-feature';
+                featureEl.innerHTML = `
+                    <div class="modal-feature-icon">${feature.icon}</div>
+                    <div class="modal-feature-text">
+                        <h4>${feature.title}</h4>
+                        <p>${feature.text}</p>
+                    </div>
+                `;
+                featuresContainer.appendChild(featureEl);
+            });
+
+            // Show modal
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+
+            // Start slider
+            startModalSlider(data.images.length);
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            if (modalSliderInterval) {
+                clearInterval(modalSliderInterval);
+            }
+        }
+
+        let currentModalSlide = 0;
+        function startModalSlider(totalSlides) {
+            if (modalSliderInterval) {
+                clearInterval(modalSliderInterval);
+            }
+            
+            modalSliderInterval = setInterval(() => {
+                currentModalSlide = (currentModalSlide + 1) % totalSlides;
+                goToSlide(currentModalSlide);
+            }, 4000);
+        }
+
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.modal-slide');
+            const dots = document.querySelectorAll('.modal-dot');
+            
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            currentModalSlide = index;
+        }
+
+        // Event listeners
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Add click handlers to facility items
+        document.querySelectorAll('.facility-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const type = item.getAttribute('data-facility');
+                openModal(type);
+            });
+        });
+
+        // Add click handlers to activity cards
+        document.querySelectorAll('.activity-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const type = card.getAttribute('data-activity');
+                openModal(type);
+            });
+        });
+
         // Background image rotation
         let currentBgIndex = 0;
         const backgrounds = document.querySelectorAll('.hero-bg');
