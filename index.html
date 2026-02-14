@@ -20,6 +20,7 @@
             --light-grey: #E8E8E8;
             --white: #FFFFFF;
             --off-white: #F5F5F5;
+            --cream: #FAF9F6;
         }
 
         * {
@@ -31,7 +32,7 @@
         body {
             font-family: 'DM Sans', sans-serif;
             color: var(--dark-grey);
-            background: var(--dark-grey);
+            background: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -55,6 +56,7 @@
             padding: 1.5rem 5%;
             background: var(--red);
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-content {
@@ -194,15 +196,6 @@
             }
         }
 
-        @keyframes gentleGlow {
-            0%, 100% {
-                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-            }
-            50% {
-                text-shadow: 2px 2px 4px rgba(193, 41, 46, 0.3), 2px 2px 0px rgba(0, 0, 0, 0.2);
-            }
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -223,17 +216,27 @@
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
             opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.2s forwards, subtleFloat 6s ease-in-out 2s infinite;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            min-height: 2.5em;
         }
 
-        .young-minds-text {
-            color: var(--red);
-            font-family: "Crimson Pro", serif;
-            font-weight: bolder;
-            letter-spacing: 0.02em;
-            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+        /* Typing animation for the hero text */
+        .typed-text {
             display: inline-block;
-            animation: gentleGlow 4s ease-in-out infinite;
+            border-right: 3px solid var(--red);
+            padding-right: 8px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .typed-text.finished {
+            border-right: none;
+            animation: none;
         }
 
         .hero-subtitle {
@@ -301,11 +304,20 @@
             transform: translateY(-2px);
         }
 
-        /* Section Styles */
+        /* Section Styles with alternating backgrounds */
         section {
             padding: 8rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .section-reveal {
@@ -321,7 +333,12 @@
             transform: translateY(0);
         }
 
-        /* Welcome Section */
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Welcome Section - White background */
         .welcome {
             background: var(--white);
         }
@@ -376,9 +393,9 @@
             color: var(--medium-grey);
         }
 
-        /* Programs Section */
+        /* Programs Section - Cream background */
         .programs {
-            background: var(--off-white);
+            background: var(--cream);
         }
 
         .programs h2 {
@@ -392,12 +409,22 @@
 
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 3rem;
         }
 
         .program-item {
             text-align: left;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(193, 41, 46, 0.08);
+        }
+
+        .program-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(193, 41, 46, 0.12);
         }
 
         .program-icon {
@@ -433,213 +460,16 @@
             font-weight: 600;
         }
 
-        /* Why Us Section */
-        .why-us {
-            background: var(--off-white);
-        }
-
-        .why-us h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 4rem;
-            color: var(--dark-grey);
-        }
-
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .feature {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--red) 0%, #A02228 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .feature-content h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--dark-grey);
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-content p {
-            color: var(--medium-grey);
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        /* Activities Section */
-        .activities {
-            background: var(--off-white);
-        }
-
-        .activities h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: var(--dark-grey);
-        }
-
-        .activities-intro {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-            font-size: 1.05rem;
-            color: var(--medium-grey);
-            line-height: 1.8;
-        }
-
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .activity-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--light-grey);
-            cursor: pointer;
-        }
-
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(193, 41, 46, 0.15);
-        }
-
-        .activity-image {
-            width: 100%;
-            height: 220px;
-            background: var(--light-grey);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .activity-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .activity-image img.active {
-            opacity: 1;
-        }
-
-        .activity-content {
-            padding: 1.8rem;
-        }
-
-        .activity-card h3 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--dark-grey);
-        }
-
-        .activity-card p {
-            color: var(--medium-grey);
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        /* Pre-Contact CTA */
-        .pre-contact-cta {
-            background: var(--red);
-            color: var(--white);
-            text-align: center;
-            padding: 6rem 5%;
-        }
-
-        .pre-contact-cta h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .pre-contact-cta p {
-            font-size: 1.15rem;
-            margin-bottom: 3rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-primary-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1.3rem 3.5rem;
-            background: var(--white);
-            color: var(--red);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-primary-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Facilities Section */
+        /* Facilities Section - White background */
         .facilities {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            background: var(--white);
             padding: 8rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .facilities::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--red), transparent);
         }
 
         .facilities-inner {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
-            position: relative;
-            z-index: 1;
         }
 
         .facilities h2 {
@@ -649,22 +479,6 @@
             margin-bottom: 1.5rem;
             text-align: center;
             color: var(--dark-grey);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .facilities h2::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--red), #A02228);
-            border-radius: 2px;
         }
 
         .facilities-intro {
@@ -674,21 +488,11 @@
             font-size: 1.1rem;
             color: var(--medium-grey);
             line-height: 1.8;
-            padding-top: 2rem;
         }
 
         .facilities-showcase {
             display: grid;
             gap: 3rem;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
         }
 
         .facility-item {
@@ -815,9 +619,193 @@
             font-size: 1.2rem;
         }
 
-        /* Contact Section */
+        /* Activities Section - Cream background */
+        .activities {
+            background: var(--cream);
+        }
+
+        .activities h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--dark-grey);
+        }
+
+        .activities-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            font-size: 1.05rem;
+            color: var(--medium-grey);
+            line-height: 1.8;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .activity-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(193, 41, 46, 0.08);
+            cursor: pointer;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(193, 41, 46, 0.15);
+        }
+
+        .activity-image {
+            width: 100%;
+            height: 220px;
+            background: var(--light-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .activity-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .activity-image img.active {
+            opacity: 1;
+        }
+
+        .activity-content {
+            padding: 2rem;
+        }
+
+        .activity-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--dark-grey);
+        }
+
+        .activity-card p {
+            color: var(--medium-grey);
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        /* Why Us Section - White background */
+        .why-us {
+            background: var(--white);
+        }
+
+        .why-us h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: var(--dark-grey);
+            text-align: center;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--red) 0%, #A02228 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: var(--medium-grey);
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        /* Pre-Contact CTA - Red background */
+        .pre-contact-cta {
+            background: var(--red);
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 5%;
+        }
+
+        .pre-contact-cta h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .pre-contact-cta p {
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-primary-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.3rem 3.5rem;
+            background: var(--white);
+            color: var(--red);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact Section - Cream background */
         .contact {
-            background: var(--off-white);
+            background: var(--cream);
             padding: 8rem 5%;
         }
 
@@ -846,17 +834,27 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(193, 41, 46, 0.08);
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(193, 41, 46, 0.1);
         }
 
         .contact-icon {
             width: 40px;
             height: 40px;
-            background: var(--white);
+            background: var(--red);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--red);
+            color: var(--white);
             flex-shrink: 0;
             font-size: 1.2rem;
         }
@@ -1251,10 +1249,18 @@
             }
 
             section {
-                padding: 4rem 5%;
+                padding: 5rem 5%;
             }
 
-            .programs-grid,
+            .programs-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .program-item {
+                padding: 2rem;
+            }
+
             .features-list {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -1262,6 +1268,7 @@
 
             .activities-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .facility-item {
@@ -1313,6 +1320,18 @@
             .modal-features {
                 grid-template-columns: 1fr;
             }
+
+            .pre-contact-cta {
+                padding: 5rem 5%;
+            }
+
+            .contact {
+                padding: 5rem 5%;
+            }
+
+            .contact-item {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -1350,8 +1369,7 @@
         
         <div class="hero-content">
             <h1>
-                <span class="young-minds-text">Quality education</span>
-                         in a safe and nurturing environment
+                <span class="typed-text" id="typedText"></span>
             </h1>
             <p class="hero-subtitle">Welcome to Debsteph Hall School—a nurturing space where children discover the joy of learning and grow into confident, capable individuals.</p>
             
@@ -1369,68 +1387,72 @@
 
     <!-- Welcome Section -->
     <section class="welcome section-reveal" id="about">
-        <div class="welcome-content">
-            <div class="section-label">Welcome Address</div>
-            <h2>A Foundation for Excellence</h2>
-            <p class="welcome-text">It is my pleasure to welcome you to Debsteph Hall School. As proprietress, I am committed to providing young learners with a strong educational foundation in a safe and supportive environment.</p>
-            
-            <p class="welcome-text">We understand that the early years of education are critical in shaping your child's future. At Debsteph Hall, we combine quality teaching with personalized attention, ensuring each child develops strong academic skills alongside confidence, curiosity, and good character. Our dedicated teachers create engaging lessons that make learning enjoyable while instilling discipline and a genuine love for knowledge.</p>
-            
-            <p class="welcome-text">From our preschool to primary classes, we focus on building essential skills in literacy, numeracy, and critical thinking, while nurturing the social and emotional development that helps children thrive. We maintain a structured yet caring atmosphere where every child is encouraged to participate, ask questions, and discover their abilities.</p>
-            
-            <p class="welcome-text">I invite you to visit our school in Bogije and see how we can partner with you in your child's educational journey.</p>
-            
-            <div class="signature">
-                <div class="signature-name">Mrs. Oluwakemi Babalola</div>
-                <div class="signature-title">Proprietress, Debsteph Hall School</div>
+        <div class="section-inner">
+            <div class="welcome-content">
+                <div class="section-label">Welcome Address</div>
+                <h2>A Foundation for Excellence</h2>
+                <p class="welcome-text">It is my pleasure to welcome you to Debsteph Hall School. As proprietress, I am committed to providing young learners with a strong educational foundation in a safe and supportive environment.</p>
+                
+                <p class="welcome-text">We understand that the early years of education are critical in shaping your child's future. At Debsteph Hall, we combine quality teaching with personalized attention, ensuring each child develops strong academic skills alongside confidence, curiosity, and good character. Our dedicated teachers create engaging lessons that make learning enjoyable while instilling discipline and a genuine love for knowledge.</p>
+                
+                <p class="welcome-text">From our preschool to primary classes, we focus on building essential skills in literacy, numeracy, and critical thinking, while nurturing the social and emotional development that helps children thrive. We maintain a structured yet caring atmosphere where every child is encouraged to participate, ask questions, and discover their abilities.</p>
+                
+                <p class="welcome-text">I invite you to visit our school in Bogije and see how we can partner with you in your child's educational journey.</p>
+                
+                <div class="signature">
+                    <div class="signature-name">Mrs. Oluwakemi Babalola</div>
+                    <div class="signature-title">Proprietress, Debsteph Hall School</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Programs Section -->
     <section class="programs section-reveal" id="programs">
-        <h2>Our Programs</h2>
-        <div class="programs-grid">
-            <div class="program-item">
-                <div class="program-icon">👶</div>
-                <h3>Crèche</h3>
-                <p>Our crèche provides a safe, warm, and stimulating environment for infants and toddlers with trained caregivers who foster early development through play-based learning.</p>
-                <div class="program-age">Ages 3 months - 2 years</div>
-            </div>
-            
-            <div class="program-item">
-                <div class="program-icon">🎨</div>
-                <h3>Pre-school</h3>
-                <p>Our preschool program introduces little learners to the joy of education with fun-filled activities that stimulate curiosity, creativity, and social skills in a loving environment.</p>
-                <div class="program-age">Ages 2-3</div>
-            </div>
-            
-            <div class="program-item">
-                <div class="program-icon">📚</div>
-                <h3>Nursery</h3>
-                <p>In nursery, children are guided through playful learning experiences that build foundational skills in literacy, numeracy, and collaboration while nurturing confidence and independence.</p>
-                <div class="program-age">Ages 4-5</div>
-            </div>
-            
-            <div class="program-item">
-                <div class="program-icon">🎓</div>
-                <h3>Primary</h3>
-                <p>The primary school program combines a strong academic curriculum with values education, critical thinking, and leadership skills, helping children excel both in and out of the classroom.</p>
-                <div class="program-age">Ages 6-12</div>
-            </div>
-            
-            <div class="program-item">
-                <div class="program-icon">⚽</div>
-                <h3>Extra-Curricular</h3>
-                <p>We offer diverse activities including music, arts, sports, and outdoor exploration to foster creativity, teamwork, and well-rounded development for every child.</p>
-                <div class="program-age">All ages</div>
-            </div>
-            
-            <div class="program-item">
-                <div class="program-icon">📖</div>
-                <h3>After-School Tutoring</h3>
-                <p>Our after-school program provides academic support and homework assistance in a structured environment, helping students reinforce lessons and excel in their studies.</p>
-                <div class="program-age">Ages 6-12</div>
+        <div class="section-inner">
+            <h2>Our Programs</h2>
+            <div class="programs-grid">
+                <div class="program-item">
+                    <div class="program-icon">👶</div>
+                    <h3>Crèche</h3>
+                    <p>Our crèche provides a safe, warm, and stimulating environment for infants and toddlers with trained caregivers who foster early development through play-based learning.</p>
+                    <div class="program-age">Ages 3 months - 2 years</div>
+                </div>
+                
+                <div class="program-item">
+                    <div class="program-icon">🎨</div>
+                    <h3>Pre-school</h3>
+                    <p>Our preschool program introduces little learners to the joy of education with fun-filled activities that stimulate curiosity, creativity, and social skills in a loving environment.</p>
+                    <div class="program-age">Ages 2-3</div>
+                </div>
+                
+                <div class="program-item">
+                    <div class="program-icon">📚</div>
+                    <h3>Nursery</h3>
+                    <p>In nursery, children are guided through playful learning experiences that build foundational skills in literacy, numeracy, and collaboration while nurturing confidence and independence.</p>
+                    <div class="program-age">Ages 4-5</div>
+                </div>
+                
+                <div class="program-item">
+                    <div class="program-icon">🎓</div>
+                    <h3>Primary</h3>
+                    <p>The primary school program combines a strong academic curriculum with values education, critical thinking, and leadership skills, helping children excel both in and out of the classroom.</p>
+                    <div class="program-age">Ages 6-12</div>
+                </div>
+                
+                <div class="program-item">
+                    <div class="program-icon">⚽</div>
+                    <h3>Extra-Curricular</h3>
+                    <p>We offer diverse activities including music, arts, sports, and outdoor exploration to foster creativity, teamwork, and well-rounded development for every child.</p>
+                    <div class="program-age">All ages</div>
+                </div>
+                
+                <div class="program-item">
+                    <div class="program-icon">📖</div>
+                    <h3>After-School Tutoring</h3>
+                    <p>Our after-school program provides academic support and homework assistance in a structured environment, helping students reinforce lessons and excel in their studies.</p>
+                    <div class="program-age">Ages 6-12</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1513,80 +1535,82 @@
 
     <!-- Activities & Events Section -->
     <section class="activities section-reveal">
-        <h2>Activities & Events</h2>
-        <p class="activities-intro">Beyond the classroom, we create memorable experiences that build confidence, celebrate diversity, and bring our school community together throughout the year.</p>
-        <div class="activities-grid">
-            <div class="activity-card" data-activity="cultural">
-                <div class="activity-image" data-activity="cultural">
-                    <img src="culturalpic1.jpeg" alt="Cultural Day 1" class="active" loading="lazy">
-                    <img src="culturalpic2.jpeg" alt="Cultural Day 2" loading="lazy">
-                    <img src="culturalpic3.jpeg" alt="Cultural Day 3" loading="lazy">
-                    <img src="culturalpic4.jpeg" alt="Cultural Day 4" loading="lazy">
+        <div class="section-inner">
+            <h2>Activities & Events</h2>
+            <p class="activities-intro">Beyond the classroom, we create memorable experiences that build confidence, celebrate diversity, and bring our school community together throughout the year.</p>
+            <div class="activities-grid">
+                <div class="activity-card" data-activity="cultural">
+                    <div class="activity-image" data-activity="cultural">
+                        <img src="culturalpic1.jpeg" alt="Cultural Day 1" class="active" loading="lazy">
+                        <img src="culturalpic2.jpeg" alt="Cultural Day 2" loading="lazy">
+                        <img src="culturalpic3.jpeg" alt="Cultural Day 3" loading="lazy">
+                        <img src="culturalpic4.jpeg" alt="Cultural Day 4" loading="lazy">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Cultural Day</h3>
+                        <p>Students celebrate Nigeria's rich cultural heritage through traditional attire, music, dance, and storytelling that honor our diverse backgrounds.</p>
+                    </div>
                 </div>
-                <div class="activity-content">
-                    <h3>Cultural Day</h3>
-                    <p>Students celebrate Nigeria's rich cultural heritage through traditional attire, music, dance, and storytelling that honor our diverse backgrounds.</p>
+                
+                <div class="activity-card" data-activity="sports">
+                    <div class="activity-image" data-activity="sports">
+                        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600" alt="Sports 1" class="active" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600" alt="Sports 2" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600" alt="Sports 3" loading="lazy">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Inter-House Sports</h3>
+                        <p>Exciting athletic competitions foster teamwork, sportsmanship, and healthy competition as students represent their houses with pride.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="activity-card" data-activity="sports">
-                <div class="activity-image" data-activity="sports">
-                    <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600" alt="Sports 1" class="active" loading="lazy">
-                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600" alt="Sports 2" loading="lazy">
-                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600" alt="Sports 3" loading="lazy">
+                
+                <div class="activity-card" data-activity="arts">
+                    <div class="activity-image" data-activity="arts">
+                        <img src="artsandcraftexbpic.jpeg" alt="Arts 1" class="active" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Arts 2" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1596496356735-71d8db5c3e32?w=600" alt="Arts 3" loading="lazy">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Arts & Crafts Exhibition</h3>
+                        <p>Children showcase their creativity and artistic talents through displays of paintings, drawings, and handmade crafts for family and friends.</p>
+                    </div>
                 </div>
-                <div class="activity-content">
-                    <h3>Inter-House Sports</h3>
-                    <p>Exciting athletic competitions foster teamwork, sportsmanship, and healthy competition as students represent their houses with pride.</p>
+                
+                <div class="activity-card" data-activity="reading">
+                    <div class="activity-image" data-activity="reading">
+                        <img src="excursionpic1.jpeg" alt="Reading 1" class="active" loading="lazy">
+                        <img src="excursionpic2.jpeg" alt="Reading 2" loading="lazy">
+                        <img src="excursionpic.jpeg" alt="Reading 3" loading="lazy">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Excursion and Field Trips</h3>
+                        <p>Exciting educational visits where students learn by exploring.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="activity-card" data-activity="arts">
-                <div class="activity-image" data-activity="arts">
-                    <img src="artsandcraftexbpic.jpeg" alt="Arts 1" class="active" loading="lazy">
-                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Arts 2" loading="lazy">
-                    <img src="https://images.unsplash.com/photo-1596496356735-71d8db5c3e32?w=600" alt="Arts 3" loading="lazy">
+                
+                <div class="activity-card" data-activity="concert">
+                    <div class="activity-image" data-activity="concert">
+                        <img src="concertpic.jpeg" alt="Concert 1" class="active" loading="lazy">
+                        <img src="artandmusic.jpeg" alt="Concert 2" loading="lazy">
+                        <img src="" alt="Concert 3" loading="lazy">
+                    </div>
+                    <div class="activity-content">
+                        <h3>End-of-Year Concert</h3>
+                        <p>Students perform songs, dances, and skits for parents in a joyful celebration of the school year's achievements and memories.</p>
+                    </div>
                 </div>
-                <div class="activity-content">
-                    <h3>Arts & Crafts Exhibition</h3>
-                    <p>Children showcase their creativity and artistic talents through displays of paintings, drawings, and handmade crafts for family and friends.</p>
-                </div>
-            </div>
-            
-            <div class="activity-card" data-activity="reading">
-                <div class="activity-image" data-activity="reading">
-                    <img src="excursionpic1.jpeg" alt="Reading 1" class="active" loading="lazy">
-                    <img src="excursionpic2.jpeg" alt="Reading 2" loading="lazy">
-                    <img src="excursionpic.jpeg" alt="Reading 3" loading="lazy">
-                </div>
-                <div class="activity-content">
-                    <h3>Excursion and Field Trips</h3>
-                    <p>Exciting educational visits where students learn by exploring.</p>
-                </div>
-            </div>
-            
-            <div class="activity-card" data-activity="concert">
-                <div class="activity-image" data-activity="concert">
-                    <img src="concertpic.jpeg" alt="Concert 1" class="active" loading="lazy">
-                    <img src="artandmusic.jpeg" alt="Concert 2" loading="lazy">
-                    <img src="" alt="Concert 3" loading="lazy">
-                </div>
-                <div class="activity-content">
-                    <h3>End-of-Year Concert</h3>
-                    <p>Students perform songs, dances, and skits for parents in a joyful celebration of the school year's achievements and memories.</p>
-                </div>
-            </div>
-            
-            <div class="activity-card" data-activity="graduation">
-                <div class="activity-image" data-activity="graduation">
-                    <img src="graduationpic4.jpeg" alt="Graduation 1" class="active" loading="lazy">
-                    <img src="IMG_8861.jpeg" alt="Graduation 2" loading="lazy">
-                    <img src="graduationpic3.jpeg" alt="Graduation 3" loading="lazy">
-                    <img src="gradpic2.jpeg" alt="Graduation 4" loading="lazy">
-                </div>
-                <div class="activity-content">
-                    <h3>Graduation Ceremony</h3>
-                    <p>We honor our graduating students with a memorable ceremony that marks their transition to the next stage of their educational journey.</p>
+                
+                <div class="activity-card" data-activity="graduation">
+                    <div class="activity-image" data-activity="graduation">
+                        <img src="graduationpic4.jpeg" alt="Graduation 1" class="active" loading="lazy">
+                        <img src="IMG_8861.jpeg" alt="Graduation 2" loading="lazy">
+                        <img src="graduationpic3.jpeg" alt="Graduation 3" loading="lazy">
+                        <img src="gradpic2.jpeg" alt="Graduation 4" loading="lazy">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Graduation Ceremony</h3>
+                        <p>We honor our graduating students with a memorable ceremony that marks their transition to the next stage of their educational journey.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1594,53 +1618,55 @@
     
     <!-- Why Us Section -->
     <section class="why-us section-reveal">
-        <h2>Why Parents Choose<br>Debsteph Hall</h2>
-        <div class="features-list">
-            <div class="feature">
-                <div class="feature-icon">🛡️</div>
-                <div class="feature-content">
-                    <h3>Safe Learning Environment</h3>
-                    <p>A secure learning space where children feel protected and parents have complete peace of mind throughout the school day.</p>
+        <div class="section-inner">
+            <h2>Why Parents Choose<br>Debsteph Hall</h2>
+            <div class="features-list">
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-content">
+                        <h3>Safe Learning Environment</h3>
+                        <p>A secure learning space where children feel protected and parents have complete peace of mind throughout the school day.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">👩‍🏫</div>
-                <div class="feature-content">
-                    <h3>Dedicated Teachers</h3>
-                    <p>Our passionate educators are committed to bringing out the best in every child through patient guidance and encouragement.</p>
+                
+                <div class="feature">
+                    <div class="feature-icon">👩‍🏫</div>
+                    <div class="feature-content">
+                        <h3>Dedicated Teachers</h3>
+                        <p>Our passionate educators are committed to bringing out the best in every child through patient guidance and encouragement.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">📖</div>
-                <div class="feature-content">
-                    <h3>Strong Academic Foundation</h3>
-                    <p>We build essential literacy and numeracy skills that prepare children for academic success in their future education.</p>
+                
+                <div class="feature">
+                    <div class="feature-icon">📖</div>
+                    <div class="feature-content">
+                        <h3>Strong Academic Foundation</h3>
+                        <p>We build essential literacy and numeracy skills that prepare children for academic success in their future education.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">🌱</div>
-                <div class="feature-content">
-                    <h3>Character Development</h3>
-                    <p>Beyond academics, we instill values like respect, honesty, and responsibility that shape young minded individuals.</p>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌱</div>
+                    <div class="feature-content">
+                        <h3>Character Development</h3>
+                        <p>Beyond academics, we instill values like respect, honesty, and responsibility that shape young minded individuals.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">🎯</div>
-                <div class="feature-content">
-                    <h3>Individual Attention</h3>
-                    <p>Every child receives personalized support to help them learn at their own pace and reach their full potential.</p>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-content">
+                        <h3>Individual Attention</h3>
+                        <p>Every child receives personalized support to help them learn at their own pace and reach their full potential.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">🏫</div>
-                <div class="feature-content">
-                    <h3>Structured Learning</h3>
-                    <p>A well-organized curriculum balanced with engaging activities keeps children motivated and excited about school.</p>
+                
+                <div class="feature">
+                    <div class="feature-icon">🏫</div>
+                    <div class="feature-content">
+                        <h3>Structured Learning</h3>
+                        <p>A well-organized curriculum balanced with engaging activities keeps children motivated and excited about school.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1754,13 +1780,37 @@
     </footer>
 
     <script>
+        // Typing animation for hero text
+        const textToType = "Quality education in a safe and nurturing environment";
+        const typedTextElement = document.getElementById('typedText');
+        let charIndex = 0;
+        
+        function typeText() {
+            if (charIndex < textToType.length) {
+                typedTextElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                // Graceful, slower typing speed (80ms per character)
+                setTimeout(typeText, 80);
+            } else {
+                // Remove cursor after typing is complete
+                setTimeout(() => {
+                    typedTextElement.classList.add('finished');
+                }, 500);
+            }
+        }
+        
+        // Start typing after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeText, 1000);
+        });
+
         // Modal data
         const modalData = {
             classroom: {
                 category: 'Learning Space',
                 title: 'Bright & Modern Classrooms',
                 description: 'Our thoughtfully designed classrooms provide an ideal learning environment where children can thrive. Each space is equipped with age-appropriate furniture, educational materials, and plenty of natural light to keep students engaged and comfortable throughout the day. We believe that a well-designed classroom is essential for effective learning, which is why we\'ve created spaces that balance functionality with warmth and inspiration.',
-                images: ['IMG_8864.jpeg', 'IMG_E8859.jpeg', 'IMG_8862.jpeg'],
+                images: ['IMG_8864.jpeg', 'classroompic.jpeg', 'classroompic2.jpeg'],
                 features: [
                     { icon: '☀️', title: 'Natural Lighting', text: 'Large windows provide abundant natural light, creating a bright and energizing atmosphere' },
                     { icon: '🪑', title: 'Ergonomic Furniture', text: 'Child-sized desks and chairs designed for comfort and proper posture' },
@@ -1772,11 +1822,7 @@
                 category: 'Outdoor Space',
                 title: 'Safe & Exciting Play Areas',
                 description: 'Physical activity and outdoor play are crucial components of childhood development. Our secure playground areas feature age-appropriate equipment where children can run, climb, and play freely while developing their gross motor skills, coordination, and social abilities. We maintain strict safety standards and provide adequate supervision to ensure every child can enjoy outdoor time with confidence.',
-                images: [
-                    'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200',
-                    'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200',
-                    'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200'
-                ],
+                images: ['playgroundpic.jpeg', 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200', 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200'],
                 features: [
                     { icon: '🛡️', title: 'Safety First', text: 'All equipment meets international safety standards with soft landing surfaces' },
                     { icon: '🎪', title: 'Age-Appropriate', text: 'Different play zones designed for various age groups and skill levels' },
@@ -1804,7 +1850,7 @@
                 category: 'School Event',
                 title: 'Cultural Day Celebration',
                 description: 'Cultural Day is one of our most vibrant and anticipated events, where students embrace and celebrate the rich diversity of Nigerian heritage. Children come dressed in traditional attire from various ethnic groups, showcasing the beautiful tapestry of cultures that make up our nation. The day is filled with traditional music, dance performances, storytelling sessions, and displays of cultural artifacts. This celebration helps children develop pride in their heritage while learning to appreciate and respect different cultures. It\'s a joyful reminder that our diversity is our strength.',
-                images: ['IMG_E5480.jpeg', 'IMG_8867.jpeg', 'IMG_E8860.jpeg', 'IMG_E8863.jpeg'],
+                images: ['culturalpic1.jpeg', 'culturalpic2.jpeg', 'culturalpic3.jpeg', 'culturalpic4.jpeg'],
                 features: [
                     { icon: '👘', title: 'Traditional Attire', text: 'Students showcase beautiful traditional clothing from various Nigerian cultures' },
                     { icon: '🥁', title: 'Cultural Performances', text: 'Music, dance, and drumming celebrating our rich heritage' },
@@ -1833,7 +1879,7 @@
                 title: 'Arts & Crafts Exhibition',
                 description: 'The Arts & Crafts Exhibition is a showcase of our students\' creativity and artistic development throughout the school year. Children\'s artwork—from paintings and drawings to sculptures and handmade crafts—is displayed in a gallery-style setting where parents, family, and community members can appreciate their talents. This exhibition builds confidence as children see their work valued and celebrated. It also provides insight into their learning journey and creative expression. For many children, seeing their artwork displayed professionally is a powerful affirmation of their abilities.',
                 images: [
-                    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600',
+                    'artsandcraftexbpic.jpeg',
                     'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600',
                     'https://images.unsplash.com/photo-1596496356735-71d8db5c3e32?w=600'
                 ],
@@ -1848,7 +1894,7 @@
                 category: 'School Event',
                 title: 'Educational Excursions & Field Trips',
                 description: 'Learning comes alive when children step outside the classroom. Our carefully planned excursions and field trips take students to museums, cultural centers, nature reserves, and other educational destinations where abstract concepts become tangible experiences. These trips are aligned with our curriculum, providing real-world context to classroom lessons. Whether exploring historical sites, observing wildlife, or visiting community institutions, these experiences broaden children\'s horizons, stimulate curiosity, and create memorable learning moments that last a lifetime.',
-                images: ['IMG_E8866.jpeg', 'IMG_6451.jpeg', 'IMG_E8865.jpeg'],
+                images: ['excursionpic1.jpeg', 'excursionpic2.jpeg', 'excursionpic.jpeg'],
                 features: [
                     { icon: '🏛️', title: 'Educational Venues', text: 'Visits to museums, cultural centers, and historical sites' },
                     { icon: '🌿', title: 'Nature Exploration', text: 'Outdoor learning experiences in parks, gardens, and nature reserves' },
@@ -1861,7 +1907,7 @@
                 title: 'End-of-Year Concert & Celebration',
                 description: 'Our End-of-Year Concert is a spectacular celebration that brings the entire school community together to honor the achievements and growth of our students. Children perform songs, dances, drama sketches, and poetry recitations they\'ve learned throughout the year. The concert showcases not just their artistic talents, but also their confidence, teamwork, and ability to perform in front of an audience. It\'s a joyful culmination of the school year, filled with pride, laughter, and sometimes happy tears as we celebrate how much our children have accomplished and grown.',
                 images: [
-                    'IMG_E5478.jpeg',
+                    'concertpic.jpeg',
                     'artandmusic.jpeg',
                     'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600'
                 ],
@@ -1876,7 +1922,7 @@
                 category: 'School Event',
                 title: 'Graduation Ceremony',
                 description: 'The Graduation Ceremony is a milestone event that marks the successful completion of a significant phase in our students\' educational journey. Graduating students don caps and gowns, receive certificates, and are celebrated for their achievements. This formal ceremony instills a sense of accomplishment and prepares children for their transition to the next educational level. Parents share in this proud moment, witnessing the growth and development their children have experienced. The ceremony includes speeches, awards for excellence, and a procession that makes every child feel honored and valued.',
-                images: ['DSC_0602.jpeg', 'IMG_E8861.jpeg', 'DSC_0571.jpeg', 'IMG_6447.jpeg'],
+                images: ['graduationpic4.jpeg', 'IMG_8861.jpeg', 'graduationpic3.jpeg', 'gradpic2.jpeg'],
                 features: [
                     { icon: '🎓', title: 'Caps & Gowns', text: 'Traditional graduation attire making the occasion formal and memorable' },
                     { icon: '📜', title: 'Certificates', text: 'Official recognition of academic achievement and completion' },
