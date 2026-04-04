@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Enrol your child at Debsteph Hall School — Bogije, Ibeju-Lekki, Lagos." />
+  <title>Enrol Now | Debsteph Hall School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --red:#C8292E;--red-warm:#D63035;
+      --cream:#FDF5F5;--dark:#1C1410;
+      --text:#2E2620;--text-mid:#7A6E68;--text-light:#A89D97;
+      --white:#FFFFFF;--border:rgba(200,41,46,0.12);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:transparent;transition:background .4s,box-shadow .4s;}
+    nav.scrolled{background:rgba(200,41,46,.97);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.18);}
+    .logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+    .logo-mark{width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:10px;display:grid;place-items:center;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.2);border:1.5px solid rgba(255,255,255,.25);}
+    .logo-mark img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+    .logo-mark span{font-size:1.1rem;color:#fff;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo-text{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem;line-height:1.15;color:var(--white);letter-spacing:.04em;text-transform:uppercase;}
+    .nav-links{display:flex;list-style:none;align-items:center;gap:2rem;}
+    .nav-links a{font-size:.86rem;font-weight:500;text-decoration:none;color:rgba(255,255,255,.88);letter-spacing:.02em;transition:color .2s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-portal{padding:.42rem 1rem;background:transparent !important;color:rgba(255,255,255,.8) !important;border:1.5px solid rgba(255,255,255,.35) !important;border-radius:4px;font-weight:500 !important;font-size:.82rem !important;transition:all .2s !important;}
+    .nav-portal:hover{border-color:rgba(255,255,255,.8) !important;color:var(--white) !important;}
+    .nav-enroll{display:inline-flex;align-items:center;padding:.48rem 1.3rem;background:var(--white) !important;color:var(--red) !important;border-radius:4px;font-weight:700 !important;font-size:.82rem !important;letter-spacing:.03em;text-decoration:none;transition:box-shadow .2s,transform .2s !important;}
+    .nav-enroll:hover{box-shadow:0 5px 22px rgba(255,255,255,.45) !important;transform:translateY(-2px) !important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+    .hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;display:block;}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(28,20,16,.97);backdrop-filter:blur(16px);z-index:99;padding:1rem 6%;flex-direction:column;border-top:1px solid rgba(255,255,255,.08);}
+    .mobile-nav.open{display:flex;}
+    .mobile-nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.98rem;font-weight:500;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s;}
+    .mobile-nav a:hover{color:#fff;}
+    .mobile-nav a:last-child{border-bottom:none;color:#FFD580;}
+
+    /* HERO */
+    .hero{position:relative;min-height:50vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--dark);}
+    .hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;}
+    .hero-slide{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:0;transition:opacity 2s ease;will-change:transform,opacity;}
+    .hero-slide.active{opacity:1;}
+    @keyframes kb-zoom-in  {from{transform:scale(1.0)}  to{transform:scale(1.06) translate(-1%,-0.6%)}}
+    @keyframes kb-zoom-out {from{transform:scale(1.06)} to{transform:scale(1.0)  translate(0.6%,0.4%)}}
+    @keyframes kb-drift-r  {from{transform:scale(1.04) translateX(-2%)} to{transform:scale(1.04) translateX(2%)}}
+    @keyframes kb-drift-l  {from{transform:scale(1.04) translateX(2%)}  to{transform:scale(1.04) translateX(-2%)}}
+    .hs1{background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1800&q=90');background-position:center 30%;}
+    .hs2{background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1800&q=90');}
+    .hs3{background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1800&q=90');background-position:center 40%;}
+    .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(28,20,16,.15) 0%,rgba(28,20,16,.88) 100%);}
+    .hero-content{position:relative;z-index:2;width:100%;padding:7rem 6% 4.5rem;}
+    .hero-eyebrow{font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.75rem;display:block;}
+    .hero-title{font-family:'Playfair Display',serif;font-weight:900;color:var(--white);line-height:1.0;font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:.55rem;}
+    .hero-title em{font-style:italic;color:#FFD580;}
+    .hero-sub{font-size:clamp(.82rem,1.1vw,.9rem);color:rgba(255,255,255,.42);line-height:1.7;font-weight:300;max-width:380px;}
+    .hero-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:3;line-height:0;}
+    .hero-wave svg{display:block;width:100%;height:40px;}
+
+    /* PAGE BODY */
+    .page-body{background:var(--cream);padding:3.5rem 5% 5rem;}
+
+    /* FORM CARD */
+    .form-card{max-width:680px;margin:0 auto;background:var(--white);border-radius:8px;box-shadow:0 4px 40px rgba(28,20,16,.09);overflow:hidden;}
+    .card-inner{padding:2.8rem 3.2rem;}
+
+    /* PROGRESS TRACK */
+    .prog-track{display:flex;align-items:center;margin-bottom:1.6rem;}
+    .ps{display:flex;align-items:center;flex:1;}
+    .ps:last-child{flex:0;}
+    .pd{width:30px;height:30px;border-radius:50%;border:2px solid var(--border);background:var(--cream);display:grid;place-items:center;flex-shrink:0;transition:all .35s cubic-bezier(.34,1.4,.64,1);position:relative;z-index:1;}
+    .pn{font-size:.68rem;font-weight:700;color:var(--text-light);transition:all .25s;}
+    .pc{position:absolute;opacity:0;transition:opacity .25s;}
+    .pc svg{width:12px;height:12px;stroke:var(--white);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+    .pl{flex:1;height:2px;background:var(--border);margin:0 -2px;transition:background .4s;}
+    .ps.active .pd{background:var(--red);border-color:var(--red);box-shadow:0 0 0 4px rgba(200,41,46,.12);}
+    .ps.active .pn{color:var(--white);}
+    .ps.done .pd{background:var(--red);border-color:var(--red);}
+    .ps.done .pn{opacity:0;}
+    .ps.done .pc{opacity:1;}
+    .ps.done .pl{background:var(--red);}
+    .prog-labels{display:flex;margin-bottom:2.4rem;}
+    .plabel{font-size:.59rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);transition:color .3s;flex:1;}
+    .plabel:last-child{flex:0;white-space:nowrap;text-align:right;}
+    .plabel.active,.plabel.done{color:var(--red);}
+
+    /* STEP PANELS */
+    .fpanel{display:none;animation:fadeUp .38s cubic-bezier(.34,1.4,.64,1) forwards;}
+    .fpanel.active{display:block;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+    .phead{margin-bottom:1.8rem;}
+    .ptag{font-size:.56rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:.38rem;display:block;}
+    .ptitle{font-family:'Playfair Display',serif;font-weight:700;font-size:1.42rem;color:var(--dark);line-height:1.12;margin-bottom:.28rem;}
+    .psub{font-size:.82rem;color:var(--text-mid);font-weight:300;line-height:1.65;}
+
+    /* FIELDS */
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+    .field{display:flex;flex-direction:column;gap:4px;margin-bottom:.9rem;}
+    .field label{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);}
+    .field input,.field select,.field textarea{
+      padding:.74rem .95rem;
+      border:1.5px solid var(--border);
+      border-radius:4px;
+      font-family:'DM Sans',sans-serif;
+      font-size:.87rem;
+      color:var(--dark);
+      background:var(--cream);
+      outline:none;
+      width:100%;
+      transition:border-color .2s,box-shadow .2s,background .2s;
+      -webkit-appearance:none;
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(200,41,46,.08);background:var(--white);}
+    .field input.error,.field select.error{border-color:#e53e3e;box-shadow:0 0 0 3px rgba(229,62,62,.08);}
+    .ferr{font-size:.66rem;color:#e53e3e;margin-top:2px;display:none;}
+    .field.has-error .ferr{display:block;}
+    .field textarea{resize:vertical;min-height:82px;}
+    .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6E68' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.2rem;cursor:pointer;}
+    .fcol2{grid-column:1/-1;}
+
+    /* NAV BUTTONS */
+    .fnav{display:flex;align-items:center;justify-content:space-between;margin-top:1.6rem;gap:.8rem;}
+    .bbk{display:inline-flex;align-items:center;gap:5px;padding:.68rem 1.3rem;background:transparent;color:var(--text-mid);border:1.5px solid var(--border);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;}
+    .bbk:hover{border-color:var(--text-mid);color:var(--dark);}
+    .bbk svg,.bfwd svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .bfwd{display:inline-flex;align-items:center;gap:7px;padding:.72rem 1.9rem;background:var(--red);color:var(--white);border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:all .22s;position:relative;overflow:hidden;}
+    .bfwd::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-20deg);}
+    .bfwd:hover::after{animation:shine .5s ease forwards;}
+    .bfwd:hover{background:var(--red-warm);transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,41,46,.32);}
+    .bfwd:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;}
+    @keyframes shine{0%{left:-100%;}100%{left:160%;}}
+
+    /* SUCCESS */
+    .success{display:none;text-align:center;padding:3rem 1rem;animation:fadeUp .5s ease;}
+    .sring{width:66px;height:66px;border-radius:50%;background:rgba(76,175,80,.08);border:2px solid rgba(76,175,80,.25);display:grid;place-items:center;margin:0 auto 1.5rem;}
+    .sring svg{width:26px;height:26px;stroke:#4CAF50;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+    .stitle{font-family:'Playfair Display',serif;font-weight:700;font-size:1.8rem;color:var(--dark);margin-bottom:.5rem;}
+    .ssub{font-size:.88rem;color:var(--text-mid);line-height:1.8;font-weight:300;max-width:340px;margin:0 auto 2rem;}
+    .sbtns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+    .bhome{display:inline-flex;align-items:center;gap:5px;padding:.72rem 1.6rem;background:var(--red);color:var(--white);border-radius:4px;font-size:.83rem;font-weight:700;text-decoration:none;transition:all .2s;}
+    .bhome:hover{background:var(--red-warm);transform:translateY(-2px);}
+    .bghst{display:inline-flex;align-items:center;gap:5px;padding:.72rem 1.6rem;background:transparent;color:var(--text-mid);border:1.5px solid var(--border);border-radius:4px;font-size:.83rem;font-weight:500;text-decoration:none;transition:all .2s;}
+    .bghst:hover{border-color:var(--text-mid);color:var(--dark);}
+
+    /* FOOTER */
+    footer{background:#111;padding:4rem 0 2.5rem;}
+    .fi{padding:0 6%;}
+    .fg{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07);}
+    .fb p{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.8;max-width:260px;margin:1rem 0 1.4rem;font-weight:300;}
+    .fsoc{display:flex;gap:.65rem;flex-wrap:wrap;}
+    .spill{display:inline-flex;align-items:center;padding:.36rem .85rem;background:rgba(255,255,255,.06);border-radius:4px;font-size:.77rem;color:rgba(255,255,255,.45);text-decoration:none;transition:all .2s;}
+    .spill:hover{background:var(--red);color:var(--white);transform:translateY(-2px);}
+    .fc h5{font-family:'DM Serif Display',serif;font-size:.88rem;color:rgba(255,255,255,.65);margin-bottom:1rem;}
+    .fc ul{list-style:none;}
+    .fc li{margin-bottom:.5rem;}
+    .fc a{font-size:.81rem;color:rgba(255,255,255,.32);text-decoration:none;font-weight:300;transition:color .2s;}
+    .fc a:hover{color:rgba(255,255,255,.72);}
+    .fbot{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .fbot p{font-size:.76rem;color:rgba(255,255,255,.22);font-weight:300;}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .card-inner{padding:2rem 1.8rem;}
+      .fg{grid-template-columns:1fr 1fr;gap:2.5rem;}
+    }
+    @media(max-width:640px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .hero-content{padding:6rem 5% 4rem;}
+      .page-body{padding:2.2rem 4% 4rem;}
+      .card-inner{padding:1.6rem 1.1rem;}
+      .frow{grid-template-columns:1fr;}
+      .prog-labels{display:none;}
+      .fnav{flex-wrap:wrap;}
+      .bfwd{width:100%;justify-content:center;}
+      .fg{grid-template-columns:1fr;gap:2rem;}
+      .fbot{flex-direction:column;text-align:center;}
+    }
+    @media(max-width:380px){
+      .hero-title{font-size:1.75rem;}
+      .card-inner{padding:1.3rem .9rem;}
+      .bfwd,.bbk{font-size:.8rem;padding:.65rem 1.1rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <div class="logo-mark"><img src="IMG_E5475.JPG" alt="Logo" onerror="this.style.display='none';this.parentNode.innerHTML='<span>D</span>';"/></div>
+    <div class="logo-text">Debsteph Hall School</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="index.html#news">Updates</a></li>
+    <li><a href="https://debsteph-portal.onrender.com/login.html" target="_blank" class="nav-portal">Student Portal</a></li>
+    <li><a href="enquiry.html" class="nav-enroll">Enroll Now</a></li>
+  </ul>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="programs.html" onclick="closeMob()">Programs</a>
+  <a href="activities.html" onclick="closeMob()">Activities</a>
+  <a href="index.html#news" onclick="closeMob()">Updates</a>
+  <a href="https://debsteph-portal.onrender.com/login.html" target="_blank" onclick="closeMob()">Student Portal</a>
+  <a href="enquiry.html" onclick="closeMob()">Enroll Now &rarr;</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide hs1"></div>
+    <div class="hero-slide hs2"></div>
+    <div class="hero-slide hs3"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Admissions &bull; 2026</span>
+    <h1 class="hero-title">Join the <em>Family</em></h1>
+    <p class="hero-sub">Three simple steps. We&rsquo;ll be in touch within one working day.</p>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C360,40 1080,40 1440,0 L1440,40 L0,40 Z" fill="#FDF5F5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="page-body">
+  <div class="form-card">
+    <div class="card-inner">
+
+      <!-- PROGRESS -->
+      <div class="prog-track" id="progTrack">
+        <div class="ps active" data-step="1">
+          <div class="pd"><span class="pn">1</span><span class="pc"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="pl"></div>
+        </div>
+        <div class="ps" data-step="2">
+          <div class="pd"><span class="pn">2</span><span class="pc"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="pl"></div>
+        </div>
+        <div class="ps" data-step="3">
+          <div class="pd"><span class="pn">3</span><span class="pc"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+      </div>
+      <div class="prog-labels">
+        <span class="plabel active" data-step="1">About You</span>
+        <span class="plabel" data-step="2">Your Child</span>
+        <span class="plabel" data-step="3">Final Details</span>
+      </div>
+
+
+      <!-- STEP 1 -->
+      <div class="fpanel" id="panel1">
+        <div class="phead">
+          <span class="ptag">Step 1 of 3</span>
+          <div class="ptitle">About your child</div>
+          <p class="psub">Help us understand which programme is the right fit.</p>
+        </div>
+        <div class="frow">
+          <div class="field" id="f-childName">
+            <label>Child&rsquo;s Full Name *</label>
+            <input type="text" id="childName" placeholder="Your child&rsquo;s full name" />
+            <span class="ferr">Please enter your child&rsquo;s name.</span>
+          </div>
+          <div class="field" id="f-dob">
+            <label>Date of Birth *</label>
+            <input type="date" id="dob" />
+            <span class="ferr">Please enter a date of birth.</span>
+          </div>
+          <div class="field fcol2" id="f-program">
+            <label>Programme of Interest *</label>
+            <select id="program">
+              <option value="">Select a programme</option>
+              <option>Pre-school (Ages 2–3)</option>
+              <option>Nursery 1 (Age 4)</option>
+              <option>Nursery 2 (Age 5)</option>
+              <option>Primary 1 (Age 6)</option>
+              <option>Primary 2 (Age 7)</option>
+              <option>Primary 3 (Age 8)</option>
+              <option>Primary 4 (Age 9)</option>
+              <option>Primary 5 (Age 10)</option>
+              <option>Primary 6 (Ages 11–12)</option>
+              <option>After-School Care</option>
+              <option>Holiday Programme</option>
+            </select>
+            <span class="ferr">Please select a programme.</span>
+          </div>
+        </div>
+        <div class="fnav">
+         <span></span>
+          <button class="bfwd" onclick="goNext(1)">
+            Continue
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+      
+        <!-- STEP 2 -->
+         <div class="fpanel active" id="panel2">
+        <div class="phead">
+          <span class="ptag">Step 2 of 3</span>
+          <div class="ptitle">Your Info</div>
+          <p class="psub">We&rsquo;ll use these details to get back to you quickly.</p>
+        </div>
+        <div class="frow">
+          <div class="field" id="f-parentName">
+            <label>Full Name *</label>
+            <input type="text" id="parentName" placeholder="e.g. Mrs. Adeola Johnson" autocomplete="name" />
+            <span class="ferr">Please enter your full name.</span>
+          </div>
+          <div class="field" id="f-phone">
+            <label>Phone / WhatsApp *</label>
+            <input type="tel" id="phone" placeholder="080X XXX XXXX" autocomplete="tel" />
+            <span class="ferr">Please enter a valid phone number.</span>
+          </div>
+          <div class="field fcol2" id="f-email">
+            <label>Email Address <span style="opacity:.5;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+            <input type="email" id="email" placeholder="your@email.com" autocomplete="email" />
+            <span class="ferr">Please enter a valid email address.</span>
+          </div>
+          <div class="field fcol2" id="f-relationship">
+            <label>Relationship to Child *</label>
+            <select id="relationship">
+              <option value="">Select one</option>
+              <option>Mother</option>
+              <option>Father</option>
+              <option>Guardian</option>
+              <option>Other</option>
+            </select>
+            <span class="ferr">Please select your relationship to the child.</span>
+          </div>
+        </div>
+        <div class="fnav">
+           <button class="bbk" onclick="goPrev(1)">
+            <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Back
+          </button>
+          <button class="bfwd" onclick="goNext(1)">
+            Continue
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+      <!-- STEP 3 -->
+      <div class="fpanel" id="panel3">
+        <div class="phead">
+          <span class="ptag">Step 3 of 3</span>
+          <div class="ptitle">Almost there</div>
+          <p class="psub">Just a few last things to help us prepare for your enquiry.</p>
+        </div>
+        <div class="frow">
+          <div class="field" id="f-startTerm">
+            <label>Preferred Start Term</label>
+            <select id="startTerm">
+              <option value="">Select a term</option>
+              <option>First Term (September)</option>
+              <option>Second Term (January)</option>
+              <option>Third Term (April)</option>
+              <option>As soon as possible</option>
+            </select>
+          </div>
+          <div class="field" id="f-source">
+            <label>How did you hear about us?</label>
+            <select id="source">
+              <option value="">Select one</option>
+              <option>Word of mouth / Referral</option>
+              <option>Instagram</option>
+              <option>Google Search</option>
+              <option>Passed by the school</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field fcol2">
+            <label>Additional Message or Questions</label>
+            <textarea id="message" placeholder="Anything else you&rsquo;d like us to know — special needs, questions, or notes&hellip;"></textarea>
+          </div>
+        </div>
+        <div class="fnav">
+          <button class="bbk" onclick="goPrev(3)">
+            <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Back
+          </button>
+          <button class="bfwd" id="submitBtn" onclick="handleSubmit()">
+            Send Enquiry
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success" id="successPanel">
+        <div class="sring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="stitle">Enquiry Received!</div>
+        <p class="ssub">Thank you for reaching out. We&rsquo;ll be in touch within one working day to discuss next steps and arrange a school visit.</p>
+        <div class="sbtns">
+          <a href="index.html" class="bhome">Back to Home</a>
+          <a href="activities.html" class="bghst">See Our Activities</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="fg">
+      <div class="fb">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:1rem;">
+          <div style="border-radius:8px;width:38px;height:38px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.08);">
+            <img src="IMG_E5475.JPG" alt="Logo" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';" />
+          </div>
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);">Debsteph Hall School</span>
+        </div>
+        <p>A nurturing home for curious learners. Quality education from Pre-school to Primary, built on excellence, care, and character.</p>
+        <div class="fsoc">
+          <a href="https://instagram.com/debstephhallschool" target="_blank" class="spill">Instagram</a>
+          <a href="tel:08030937003" class="spill">Call Us</a>
+          <a href="https://debsteph-portal.onrender.com/login.html" target="_blank" class="spill">Student Portal</a>
+        </div>
+      </div>
+      <div class="fc">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="index.html#news">News &amp; Updates</a></li>
+          <li><a href="enquiry.html">Enrol Now</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="programs.html">Pre-school (Ages 2&ndash;3)</a></li>
+          <li><a href="programs.html">Nursery (Ages 4&ndash;5)</a></li>
+          <li><a href="programs.html">Primary (Ages 6&ndash;12)</a></li>
+          <li><a href="programs.html">Extra-Curricular</a></li>
+          <li><a href="programs.html">After-School Care</a></li>
+          <li><a href="programs.html">Summer School</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>&copy; 2026 Debsteph Hall School. All rights reserved.</p>
+      <p>Bogije, Ibeju-Lekki, Lagos, Nigeria</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // NAV SCROLL
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+  // MOBILE NAV
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mobileNav');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
+  function closeMob() { ham.classList.remove('open'); mob.classList.remove('open'); }
+
+  // HERO SLIDESHOW
+  const slides = Array.from(document.querySelectorAll('.hero-slide'));
+  const KB = ['kb-zoom-in','kb-zoom-out','kb-drift-r','kb-drift-l'];
+  const DUR = 6000;
+  let idx = 0;
+  function applyKB(s) {
+    const a = KB[Math.floor(Math.random() * KB.length)];
+    s.style.animation = 'none'; s.offsetHeight;
+    s.style.animation = `${a} ${DUR + 1800}ms ease-in-out forwards`;
+  }
+  slides[idx].classList.add('active'); applyKB(slides[idx]);
+  setInterval(() => {
+    slides[idx].classList.remove('active');
+    idx = (idx + 1) % slides.length;
+    applyKB(slides[idx]);
+    slides[idx].classList.add('active');
+  }, DUR);
+
+  // STEP STATE
+  let cur = 1;
+
+  function updateUI(step) {
+    document.querySelectorAll('.fpanel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('panel' + step);
+    if (panel) panel.classList.add('active');
+
+    document.querySelectorAll('#progTrack .ps').forEach(el => {
+      const s = +el.dataset.step;
+      el.classList.toggle('active', s === step);
+      el.classList.toggle('done', s < step);
+    });
+
+    document.querySelectorAll('.plabel').forEach(el => {
+      const s = +el.dataset.step;
+      el.classList.toggle('active', s === step);
+      el.classList.toggle('done', s < step);
+    });
+  }
+
+  function validateStep(step) {
+    let ok = true;
+    function check(wid, iid, cond) {
+      const w = document.getElementById(wid), i = document.getElementById(iid);
+      if (!w || !i) return;
+      const v = cond(i.value.trim());
+      w.classList.toggle('has-error', !v);
+      i.classList.toggle('error', !v);
+      if (!v) ok = false;
+    }
+    if (step === 1) {
+      check('f-parentName','parentName', v => v.length > 1);
+      check('f-phone','phone', v => v.length >= 7);
+      check('f-relationship','relationship', v => v !== '');
+      const e = document.getElementById('email'), ew = document.getElementById('f-email');
+      if (e.value.trim() && !/\S+@\S+\.\S+/.test(e.value.trim())) {
+        ew.classList.add('has-error'); e.classList.add('error'); ok = false;
+      } else { ew.classList.remove('has-error'); e.classList.remove('error'); }
+    }
+    if (step === 2) {
+      check('f-childName','childName', v => v.length > 1);
+      check('f-dob','dob', v => v !== '');
+      check('f-program','program', v => v !== '');
+    }
+    return ok;
+  }
+
+  function goNext(step) {
+    if (!validateStep(step)) return;
+    cur = step + 1; updateUI(cur);
+    document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function goPrev(step) {
+    cur = step - 1; updateUI(cur);
+    document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function handleSubmit() {
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    setTimeout(() => {
+      document.querySelectorAll('.fpanel').forEach(p => p.classList.remove('active'));
+      document.getElementById('successPanel').style.display = 'block';
+      document.getElementById('progTrack').style.display = 'none';
+      document.querySelector('.prog-labels').style.display = 'none';
+    }, 1500);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Debsteph Hall School Programs — Pre-school, Nursery, Primary, Extra-Curricular, After-School Care and Holiday Programme in Bogije, Lagos." />
+  <title>Programs | Debsteph Hall School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root{--red:#C8292E;--red-warm:#D63035;--cream:#FDF5F5;--sand:#F5ECEC;--dark:#1C1410;--text:#2E2620;--text-mid:#7A6E68;--white:#FFFFFF;--border:rgba(200,41,46,0.12);}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:76px;background:transparent;transition:background .4s,backdrop-filter .4s,box-shadow .4s;}
+    nav.scrolled{background:rgba(200,41,46,.97);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.18);}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+    .logo-mark{width:42px;height:42px;background:rgba(255,255,255,.15);border-radius:10px;display:grid;place-items:center;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.2);border:1.5px solid rgba(255,255,255,.25);}
+    .logo-mark img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+    .logo-mark span{font-size:1.2rem;color:#fff;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo-text{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.28rem;line-height:1.15;color:var(--white);letter-spacing:.04em;text-transform:uppercase;}
+    .nav-links{display:flex;list-style:none;align-items:center;gap:2.2rem;}
+    .nav-links a{font-size:.88rem;font-weight:500;text-decoration:none;color:rgba(255,255,255,.88);letter-spacing:.02em;transition:color .2s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-portal{padding:.45rem 1.1rem;background:transparent !important;color:rgba(255,255,255,.8) !important;border:1.5px solid rgba(255,255,255,.35) !important;border-radius:4px;font-weight:500 !important;font-size:.84rem !important;transition:all .2s !important;}
+    .nav-portal:hover{border-color:rgba(255,255,255,.8) !important;color:var(--white) !important;}
+    .nav-enroll{display:inline-flex;align-items:center;padding:.52rem 1.4rem;background:var(--white) !important;color:var(--red) !important;border-radius:4px;font-weight:700 !important;font-size:.84rem !important;letter-spacing:.03em;text-decoration:none;box-shadow:0 2px 12px rgba(255,255,255,.25);transition:box-shadow .2s,transform .2s !important;}
+    .nav-enroll:hover{box-shadow:0 5px 22px rgba(255,255,255,.45) !important;transform:translateY(-2px) !important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+    .hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;display:block;}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mobile-nav{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(28,20,16,.96);backdrop-filter:blur(16px);z-index:99;padding:1.2rem 6%;flex-direction:column;border-top:1px solid rgba(255,255,255,.08);}
+    .mobile-nav.open{display:flex;}
+    .mobile-nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:1.05rem;font-weight:500;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s;}
+    .mobile-nav a:hover{color:#fff;}
+    .mobile-nav a:last-child{border-bottom:none;color:#FFD580;}
+
+    /* HERO */
+    .page-hero-wrap{position:relative;}
+    .page-hero{position:relative;height:56vh;min-height:380px;max-height:460px;display:flex;align-items:flex-start;overflow:hidden;background:var(--dark);}
+    .page-hero-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:3;line-height:0;overflow:hidden;}
+    .page-hero-wave svg{display:block;width:100%;height:44px;}
+    .page-hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;}
+    .page-hero-slide{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:0;transition:opacity 2s ease;will-change:transform,opacity;}
+    .page-hero-slide.active{opacity:1;}
+    @keyframes kb-zoom-in  {from{transform:scale(1.0)}  to{transform:scale(1.06) translate(-1%,-0.6%)}}
+    @keyframes kb-zoom-out {from{transform:scale(1.06)} to{transform:scale(1.0)  translate(0.6%,0.4%)}}
+    @keyframes kb-drift-r  {from{transform:scale(1.04) translateX(-2%)} to{transform:scale(1.04) translateX(2%)}}
+    @keyframes kb-drift-l  {from{transform:scale(1.04) translateX(2%)}  to{transform:scale(1.04) translateX(-2%)}}
+    .page-hero-slide-1{background-image:url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1800&q=90');background-position:center 40%;}
+    .page-hero-slide-2{background-image:url('https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1800&q=90');}
+    .page-hero-slide-3{background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1800&q=90');}
+    .page-hero-slide-4{background-image:url('https://images.unsplash.com/photo-1571210862729-78a52d3779a2?w=1800&q=90');}
+    .page-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(28,20,16,.25) 0%,rgba(28,20,16,.88) 100%);}
+    .page-hero-content{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6% 5rem;}
+    .page-hero-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.9rem;display:block;}
+    .page-hero-title{font-family:'Playfair Display',serif;font-weight:900;color:var(--white);line-height:1.0;margin-bottom:.85rem;}
+    .page-hero-title .line1{display:block;font-size:clamp(2rem,4vw,3.4rem);}
+    .page-hero-desc{font-size:clamp(.82rem,1.1vw,.93rem);color:rgba(255,255,255,.5);line-height:1.7;font-weight:300;max-width:500px;}
+
+    /* SHARED */
+    .section{padding:5rem 0;}
+    .inner{padding:0 6%;max-width:1240px;margin:0 auto;}
+    .eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;display:block;}
+    .eyebrow-light{color:rgba(255,255,255,.35);}
+    .h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.8rem,3.2vw,2.7rem);color:var(--dark);line-height:1.12;margin-bottom:1rem;}
+    .h2 em{font-style:italic;color:var(--red);}
+    .h2-white{color:var(--white);}
+    .lead{font-size:.95rem;color:var(--text-mid);line-height:1.85;font-weight:300;}
+    .rule{width:36px;height:2px;background:var(--red);opacity:.35;margin:1.5rem 0;}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.34,1.4,.64,1),transform .6s cubic-bezier(.34,1.4,.64,1);}
+    .reveal.in{opacity:1;transform:none;}
+    .d1{transition-delay:.05s}.d2{transition-delay:.12s}.d3{transition-delay:.19s}.d4{transition-delay:.26s}
+
+    /* INTRO STRIP */
+    .intro-strip{background:var(--white);position:relative;z-index:2;margin-top:-2px;}
+    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 0;}
+    .intro-right p{font-size:.9rem;color:var(--text-mid);line-height:1.9;font-weight:300;margin-bottom:.9rem;}
+    .intro-right p:last-child{margin-bottom:0;}
+
+    /* PROGRAMME SECTIONS — editorial pitch style */
+    .prog-section{padding:5rem 0;position:relative;}
+    .prog-section:nth-child(odd){background:var(--cream);}
+    .prog-section:nth-child(even){background:var(--sand);}
+
+    .prog-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;}
+    .prog-layout.flip{grid-template-columns:1.6fr 1fr;}
+
+    .prog-visual{position:relative;}
+    .prog-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px;display:block;}
+    .prog-age-tag{position:absolute;top:-1rem;right:-1rem;background:var(--red);color:var(--white);padding:.9rem 1.1rem;border-radius:3px;text-align:center;box-shadow:0 8px 24px rgba(200,41,46,.3);}
+    .prog-age-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;line-height:1;}
+    .prog-age-label{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-top:3px;}
+
+    .prog-body{}
+    .prog-name{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.6rem,2.8vw,2.2rem);color:var(--dark);line-height:1.1;margin-bottom:.5rem;}
+    .prog-name em{font-style:italic;color:var(--red);}
+    .prog-tagline{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:1.4rem;opacity:.7;}
+    .prog-pitch{font-size:.93rem;color:var(--text-mid);line-height:1.9;font-weight:300;margin-bottom:1.6rem;}
+    .prog-highlights{border-top:1px solid var(--border);margin-top:1.8rem;padding-top:1.8rem;}
+    .prog-highlights-label{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);margin-bottom:1rem;opacity:.7;}
+    .prog-highlight-list{display:flex;flex-direction:column;gap:.9rem;}
+    .prog-highlight-item{display:flex;gap:1rem;align-items:flex-start;}
+    .prog-highlight-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:.45em;opacity:.6;}
+    .prog-highlight-text{font-size:.86rem;color:var(--text-mid);line-height:1.7;font-weight:300;}
+    .prog-highlight-text strong{color:var(--dark);font-weight:600;}
+    .prog-enroll{display:inline-flex;align-items:center;gap:8px;margin-top:2rem;padding:.75rem 1.6rem;background:var(--red);color:var(--white);border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-decoration:none;transition:all .2s;}
+    .prog-enroll:hover{background:var(--red-warm);transform:translateY(-2px);box-shadow:0 6px 18px rgba(200,41,46,.35);}
+
+    /* FULL-WIDTH PROGRAMMES (no image) */
+    .prog-wide{background:var(--dark);padding:4rem 0;}
+    .prog-wide-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,.07);margin-top:2.5rem;}
+    .prog-wide-item{padding:2.5rem 0;}
+    .prog-wide-item:first-child{padding-right:4rem;border-right:1px solid rgba(255,255,255,.07);}
+    .prog-wide-item:last-child{padding-left:4rem;}
+    .prog-wide-label{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;display:flex;align-items:center;gap:.7rem;}
+    .prog-wide-label::after{content:'';flex:1;height:1px;background:rgba(200,41,46,.2);}
+    .prog-wide-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:.7rem;}
+    .prog-wide-desc{font-size:.87rem;color:rgba(255,255,255,.4);line-height:1.9;font-weight:300;margin-bottom:1.4rem;}
+    .prog-wide-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem;}
+    .prog-wide-list-item{display:flex;gap:.8rem;align-items:flex-start;font-size:.83rem;color:rgba(255,255,255,.35);font-weight:300;line-height:1.6;}
+    .prog-wide-list-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:.52em;opacity:.7;}
+    .prog-wide-list-item strong{color:rgba(255,255,255,.65);font-weight:500;}
+    .prog-wide-enroll{display:inline-flex;align-items:center;gap:6px;padding:.6rem 1.3rem;border:1.5px solid rgba(200,41,46,.4);color:rgba(255,255,255,.55);border-radius:3px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;transition:all .2s;}
+    .prog-wide-enroll:hover{border-color:var(--red);color:var(--white);transform:translateY(-2px);}
+
+    /* FOOTER */
+    footer{background:#111;padding:4rem 0 2.5rem;}
+    .footer-inner{padding:0 6%;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07);}
+    .footer-brand p{font-size:.86rem;color:rgba(255,255,255,.38);line-height:1.8;max-width:260px;margin:1rem 0 1.5rem;font-weight:300;}
+    .footer-socials{display:flex;gap:.7rem;flex-wrap:wrap;}
+    .social-pill{display:inline-flex;align-items:center;gap:6px;padding:.4rem .9rem;background:rgba(255,255,255,.06);border-radius:4px;font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none;transition:all .2s;}
+    .social-pill:hover{background:var(--red);color:var(--white);transform:translateY(-2px);}
+    .footer-col h5{font-family:'DM Serif Display',serif;font-size:.92rem;color:rgba(255,255,255,.65);margin-bottom:1.2rem;}
+    .footer-col ul{list-style:none;}
+    .footer-col li{margin-bottom:.6rem;}
+    .footer-col a{font-size:.83rem;color:rgba(255,255,255,.32);text-decoration:none;font-weight:300;transition:color .2s;}
+    .footer-col a:hover{color:rgba(255,255,255,.72);}
+    .footer-bottom{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .footer-bottom p{font-size:.78rem;color:rgba(255,255,255,.22);font-weight:300;}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .intro-grid{grid-template-columns:1fr;gap:2.5rem;}
+      .prog-layout,.prog-layout.flip{grid-template-columns:1fr;}
+      .prog-visual{display:none;}
+      .prog-wide-grid{grid-template-columns:1fr;}
+      .prog-wide-item:first-child{padding-right:0;border-right:none;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.07);}
+      .prog-wide-item:last-child{padding-left:0;}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
+    }
+    @media(max-width:640px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .section{padding:2.5rem 0;}
+      .prog-section{padding:3rem 0;}
+      .prog-wide{padding:3rem 0;}
+      .intro-stat-row{gap:1.8rem;}
+      .page-hero{height:400px;min-height:400px;}
+      .footer-grid{grid-template-columns:1fr;gap:2rem;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <div class="logo-mark"><img src="IMG_E5475.JPG" alt="Logo" onerror="this.style.display='none';this.parentNode.innerHTML='<span>D</span>';"/></div>
+    <div class="logo-text">Debsteph Hall School</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="index.html#news">Updates</a></li>
+    <li><a href="https://debsteph-portal.onrender.com/login.html" target="_blank" class="nav-portal">Student Portal</a></li>
+    <li><a href="enquiry.html" class="nav-enroll">Enroll Now</a></li>
+  </ul>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="programs.html" onclick="closeMob()">Programs</a>
+  <a href="activities.html" onclick="closeMob()">Activities</a>
+  <a href="updates.html" onclick="closeMob()">Updates</a>
+  <a href="https://debsteph-portal.onrender.com/login.html" target="_blank" onclick="closeMob()">Student Portal</a>
+  <a href="enquiry.html" onclick="closeMob()">Enroll Now &rarr;</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero-wrap">
+<div class="page-hero">
+  <div class="page-hero-slides">
+    <div class="page-hero-slide page-hero-slide-1"></div>
+    <div class="page-hero-slide page-hero-slide-2"></div>
+    <div class="page-hero-slide page-hero-slide-3"></div>
+    <div class="page-hero-slide page-hero-slide-4"></div>
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-eyebrow">Our Programmes</span>
+    <h1 class="page-hero-title">
+      <span class="line1">What Do We Offer?</span>
+    </h1>
+    <p class="page-hero-desc">A complete educational pathway, from a child's very first school day through to the end of primary.</p>
+  </div>
+  <div class="page-hero-wave">
+    <svg viewBox="0 0 1440 44" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C360,44 1080,44 1440,0 L1440,44 L0,44 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</div>
+</div>
+
+<!-- INTRO -->
+<section class="intro-strip">
+  <div class="inner">
+    <div class="intro-grid">
+      <div>
+        <span class="eyebrow reveal d1">Built for Every Stage</span>
+        <h2 class="h2 reveal d2">Structured for nurturing<br><em> little</em> minds</h2>
+        <div class="rule reveal d3"></div>
+      </div>
+      <div class="intro-right reveal d3">
+        <p>Every programme at Debsteph Hall is built with one goal in mind — giving your child the strongest possible foundation for the years ahead. We don't believe in a one-size-fits-all approach. Each stage of learning here is carefully structured to meet children where they are, and move them forward with confidence.</p>
+        <p>From the first day a toddler walks through our doors to the morning a Primary 6 pupil finishes their final term, the experience is thoughtful, personal, and genuinely invested in the child.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRE-SCHOOL -->
+<section class="prog-section">
+  <div class="inner">
+    <div class="prog-layout">
+      <div class="prog-visual reveal d1">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=85" alt="Pre-school" />
+        <div class="prog-age-tag">
+          <div class="prog-age-num">2–3</div>
+          <div class="prog-age-label">Years</div>
+        </div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name reveal d2">Pre-<em>school</em></div>
+        <div class="prog-tagline reveal d2">Where it all begins</div>
+        <p class="prog-pitch reveal d3">The earliest years of a child's life are the most formative — and we treat them that way. Pre-school at Debsteph Hall is a warm, play-rich environment where children develop at their own pace, with patient teachers who genuinely know each child by name and nature. We're not rushing them. We're building the right foundation.</p>
+        <div class="prog-highlights reveal d4">
+          <div class="prog-highlights-label">What your child gets</div>
+          <div class="prog-highlight-list">
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Play-based learning</strong> that builds early cognitive and social skills naturally</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Sensory and creative activities</strong> — art, music, and structured exploration every day</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Small class sizes</strong> so every child is known, seen, and supported</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Consistent daily routines</strong> that give children emotional security and confidence</div></div>
+          </div>
+        </div>
+        <a href="enquiry.html" class="prog-enroll reveal d4">Enquire About Enrolment &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NURSERY -->
+<section class="prog-section">
+  <div class="inner">
+    <div class="prog-layout flip">
+      <div class="prog-body">
+        <div class="prog-name reveal d2"><em>Nursery</em></div>
+        <div class="prog-tagline reveal d2">The academic journey begins</div>
+        <p class="prog-pitch reveal d3">Nursery is where play gives way to structure — and children begin discovering that learning can be both serious and genuinely enjoyable. We introduce phonics, early reading, and numeracy through hands-on activities designed to spark curiosity rather than create pressure. By the time a child leaves our nursery, they are ready — and eager — for primary school.</p>
+        <div class="prog-highlights reveal d4">
+          <div class="prog-highlights-label">What your child gets</div>
+          <div class="prog-highlight-list">
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Phonics and early reading</strong> for a strong, lasting literacy foundation</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Practical numeracy</strong> through activities that make numbers make sense</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Creative arts and group projects</strong> to build collaboration and expression</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Daily story time</strong> and oral comprehension to spark imagination</div></div>
+          </div>
+        </div>
+        <a href="enquiry.html" class="prog-enroll reveal d4">Enquire About Enrolment &rarr;</a>
+      </div>
+      <div class="prog-visual reveal d1">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&q=85" alt="Nursery" />
+        <div class="prog-age-tag">
+          <div class="prog-age-num">4–5</div>
+          <div class="prog-age-label">Years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIMARY -->
+<section class="prog-section">
+  <div class="inner">
+    <div class="prog-layout">
+      <div class="prog-visual reveal d1">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=85" alt="Primary" />
+        <div class="prog-age-tag">
+          <div class="prog-age-num">6–12</div>
+          <div class="prog-age-label">Years</div>
+        </div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name reveal d2">Primary <em>School</em></div>
+        <div class="prog-tagline reveal d2">Where potential becomes achievement</div>
+        <p class="prog-pitch reveal d3">Our primary programme is rigorous, comprehensive, and rooted in character. We hold high standards across all core subjects while making sure every child actually understands — not just keeps up. Pupils leave Debsteph Hall Primary with academic confidence, strong study habits, and the values to carry them well beyond the classroom.</p>
+        <div class="prog-highlights reveal d4">
+          <div class="prog-highlights-label">What your child gets</div>
+          <div class="prog-highlight-list">
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Core subjects</strong> taught in depth — English, Mathematics, Basic Science, and Social Studies</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Computer Studies</strong> and digital literacy introduced at an early stage</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Termly assessments</strong> with detailed report cards and structured parent feedback</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Character education</strong> — integrity, civic responsibility, and leadership values built in</div></div>
+          </div>
+        </div>
+        <a href="enquiry.html" class="prog-enroll reveal d4">Enquire About Enrolment &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA-CURRICULAR + AFTER-SCHOOL: dark split panel -->
+<section class="prog-wide">
+  <div class="inner">
+    <span class="eyebrow eyebrow-light reveal d1">Beyond the Classroom</span>
+    <h2 class="h2 h2-white reveal d2">More than <em>academics</em></h2>
+    <div class="prog-wide-grid">
+      <div class="prog-wide-item reveal d3">
+        <div class="prog-wide-label">Extra-Curricular</div>
+        <div class="prog-wide-name">Activities &amp; Enrichment</div>
+        <p class="prog-wide-desc">School is not only about what happens in the classroom. Our extra-curricular programme develops talent, builds confidence, and shapes well-rounded young people — woven into the school week and showcased at major events throughout the year.</p>
+        <div class="prog-wide-list">
+          <div class="prog-wide-list-item"><strong>Music, arts, and drama</strong> for creative expression and public confidence</div>
+          <div class="prog-wide-list-item"><strong>Group sports and athletics</strong> including football, relay, and inter-house competitions</div>
+          <div class="prog-wide-list-item"><strong>Cultural performance</strong> at key school events across the academic year</div>
+          <div class="prog-wide-list-item"><strong>Leadership activities</strong> that build responsibility and teamwork</div>
+        </div>
+        <a href="enquiry.html" class="prog-wide-enroll">Enquire About Enrolment &rarr;</a>
+      </div>
+      <div class="prog-wide-item reveal d4">
+        <div class="prog-wide-label">After-School Care</div>
+        <div class="prog-wide-name">Safe Until You Arrive</div>
+        <p class="prog-wide-desc">A supervised, calm extension of the school day for parents who need the flexibility. Children are engaged, supported, and well cared for — and you have complete peace of mind knowing exactly where they are.</p>
+        <div class="prog-wide-list">
+          <div class="prog-wide-list-item"><strong>Guided homework support</strong> and structured revision time each afternoon</div>
+          <div class="prog-wide-list-item"><strong>Qualified staff on duty</strong> with flexible pick-up available until 5:30pm</div>
+          <div class="prog-wide-list-item"><strong>Snack, rest, and free play</strong> in a secure and calm environment</div>
+          <div class="prog-wide-list-item"><strong>Strict sign-out protocols</strong> for safe handover to parents every time</div>
+        </div>
+        <a href="enquiry.html" class="prog-wide-enroll">Enquire About Enrolment &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOLIDAY PROGRAMME -->
+<section class="prog-section" style="background:var(--sand);">
+  <div class="inner">
+    <div class="prog-layout flip">
+      <div class="prog-body">
+        <div class="prog-name reveal d2">Summer <em>School</em></div>
+        <div class="prog-tagline reveal d2">Keeping momentum during the break</div>
+        <p class="prog-pitch reveal d3">We also run a Summer School programme during the long holiday break. It's our way of making sure children don't lose the progress they've worked hard for — and that they actually enjoy the time. Themed activity weeks, creative projects, outdoor sessions, and optional revision come together in a structured programme that keeps young minds active and ready for the term ahead. It's the full Debsteph Hall experience, just in the holidays.</p>
+        <div class="prog-highlights reveal d4">
+          <div class="prog-highlights-label">What your child gets</div>
+          <div class="prog-highlight-list">
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Themed activity weeks</strong> — Science, Arts, Nature, and more each holiday</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Creative projects and outdoor activities</strong> for every age group</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Optional academic revision</strong> for children preparing for the new term</div></div>
+            <div class="prog-highlight-item"><div class="prog-highlight-dot"></div><div class="prog-highlight-text"><strong>Sports and games</strong> to keep children active and energised</div></div>
+          </div>
+        </div>
+        <a href="enquiry.html" class="prog-enroll reveal d4">Enquire About Enrolment &rarr;</a>
+      </div>
+      <div class="prog-visual reveal d1">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=85" alt="Holiday Programme" />
+        <div class="prog-age-tag">
+          <div class="prog-age-num">All</div>
+          <div class="prog-age-label">Ages</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+          <div style="border-radius:8px;width:40px;height:40px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.08);">
+            <img src="IMG_E5475.JPG" alt="Logo" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';" />
+          </div>
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);">Debsteph Hall School</span>
+        </div>
+        <p>A nurturing home for curious learners. Quality education from Pre-school to Primary, built on excellence, care, and character.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/debstephhallschool" target="_blank" class="social-pill">Instagram</a>
+          <a href="tel:08030937003" class="social-pill">Call Us</a>
+          <a href="https://debsteph-portal.onrender.com/login.html" target="_blank" class="social-pill">Student Portal</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="index.html#news">News &amp; Updates</a></li>
+          <li><a href="enquiry.html">Enrol Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="programs.html">Pre-school (Ages 2&ndash;3)</a></li>
+          <li><a href="programs.html">Nursery (Ages 4&ndash;5)</a></li>
+          <li><a href="programs.html">Primary (Ages 6&ndash;12)</a></li>
+          <li><a href="programs.html">Extra-Curricular</a></li>
+          <li><a href="programs.html">After-School Care</a></li>
+          <li><a href="programs.html">Holiday Programme</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Debsteph Hall School. All rights reserved.</p>
+      <p>Bogije, Ibeju-Lekki, Lagos, Nigeria</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // HERO SLIDESHOW — Ken Burns
+  const phSlides = Array.from(document.querySelectorAll('.page-hero-slide'));
+  const PH_KB = ['kb-zoom-in','kb-zoom-out','kb-drift-r','kb-drift-l'];
+  const PH_DUR = 6000;
+  let phIdx = 0;
+  function applyPhKB(slide) {
+    const anims = ['kb-zoom-in','kb-zoom-out','kb-drift-r','kb-drift-l'];
+    const anim = anims[Math.floor(Math.random() * anims.length)];
+    slide.style.animation = 'none'; slide.offsetHeight;
+    slide.style.animation = `${anim} ${PH_DUR + 1800}ms ease-in-out forwards`;
+  }
+  phSlides[phIdx].classList.add('active');
+  applyPhKB(phSlides[phIdx]);
+  setInterval(() => {
+    phSlides[phIdx].classList.remove('active');
+    phIdx = (phIdx + 1) % phSlides.length;
+    applyPhKB(phSlides[phIdx]);
+    phSlides[phIdx].classList.add('active');
+  }, PH_DUR);
+
+  // NAV SCROLL
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+  // MOBILE NAV
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mobileNav');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
+  function closeMob() { ham.classList.remove('open'); mob.classList.remove('open'); }
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

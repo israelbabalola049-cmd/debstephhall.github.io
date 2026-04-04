@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Debsteph Hall School — our story, vision, mission, values and leadership in Bogije, Ibeju-Lekki, Lagos." />
+  <title>About Us | Debsteph Hall School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root{--red:#C8292E;--red-warm:#D63035;--cream:#FDF5F5;--sand:#F5ECEC;--dark:#1C1410;--text:#2E2620;--text-mid:#7A6E68;--white:#FFFFFF;--border:rgba(200,41,46,0.12);}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:76px;background:transparent;transition:background .4s,backdrop-filter .4s,box-shadow .4s;}
+    nav.scrolled{background:rgba(200,41,46,.97);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.18);}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+    .logo-mark{width:42px;height:42px;background:rgba(255,255,255,.15);border-radius:10px;display:grid;place-items:center;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.2);border:1.5px solid rgba(255,255,255,.25);}
+    .logo-mark img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+    .logo-mark span{font-size:1.2rem;color:#fff;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo-text{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.28rem;line-height:1.15;color:var(--white);letter-spacing:.04em;text-transform:uppercase;}
+    .nav-links{display:flex;list-style:none;align-items:center;gap:2.2rem;}
+    .nav-links a{font-size:.88rem;font-weight:500;text-decoration:none;color:rgba(255,255,255,.88);letter-spacing:.02em;transition:color .2s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-portal{padding:.45rem 1.1rem;background:transparent !important;color:rgba(255,255,255,.8) !important;border:1.5px solid rgba(255,255,255,.35) !important;border-radius:4px;font-weight:500 !important;font-size:.84rem !important;transition:all .2s !important;}
+    .nav-portal:hover{border-color:rgba(255,255,255,.8) !important;color:var(--white) !important;}
+    .nav-enroll{display:inline-flex;align-items:center;padding:.52rem 1.4rem;background:var(--white) !important;color:var(--red) !important;border-radius:4px;font-weight:700 !important;font-size:.84rem !important;letter-spacing:.03em;text-decoration:none;box-shadow:0 2px 12px rgba(255,255,255,.25);transition:box-shadow .2s,transform .2s !important;}
+    .nav-enroll:hover{box-shadow:0 5px 22px rgba(255,255,255,.45) !important;transform:translateY(-2px) !important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+    .hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;display:block;}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mobile-nav{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(28,20,16,.96);backdrop-filter:blur(16px);z-index:99;padding:1.2rem 6%;flex-direction:column;border-top:1px solid rgba(255,255,255,.08);}
+    .mobile-nav.open{display:flex;}
+    .mobile-nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:1.05rem;font-weight:500;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s;}
+    .mobile-nav a:hover{color:#fff;}
+    .mobile-nav a:last-child{border-bottom:none;color:#FFD580;}
+
+    /* HERO */
+    .page-hero-wrap{position:relative;}
+    .page-hero{position:relative;height:56vh;min-height:380px;max-height:460px;display:flex;align-items:flex-start;overflow:hidden;background:var(--dark);}
+    .page-hero-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:3;line-height:0;overflow:hidden;}
+    .page-hero-wave svg{display:block;width:100%;height:44px;}
+    .page-hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;}
+    .page-hero-slide{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:0;transition:opacity 2s ease;will-change:transform,opacity;}
+    .page-hero-slide.active{opacity:1;}
+    @keyframes kb-zoom-in  {from{transform:scale(1.0)}  to{transform:scale(1.06) translate(-1%,-0.6%)}}
+    @keyframes kb-zoom-out {from{transform:scale(1.06)} to{transform:scale(1.0)  translate(0.6%,0.4%)}}
+    @keyframes kb-drift-r  {from{transform:scale(1.04) translateX(-2%)} to{transform:scale(1.04) translateX(2%)}}
+    @keyframes kb-drift-l  {from{transform:scale(1.04) translateX(2%)}  to{transform:scale(1.04) translateX(-2%)}}
+    @keyframes kb-drift-up {from{transform:scale(1.04) translateY(2%)}  to{transform:scale(1.04) translateY(-2%)}}
+    @keyframes kb-drift-dn {from{transform:scale(1.04) translateY(-2%)} to{transform:scale(1.04) translateY(2%)}}
+    @keyframes kb-tilt-r   {from{transform:scale(1.03) translate(-1.5%,0.5%)} to{transform:scale(1.06) translate(1.5%,-0.5%)}}
+    @keyframes kb-tilt-l   {from{transform:scale(1.03) translate(1.5%,-0.5%)} to{transform:scale(1.06) translate(-1.5%,0.5%)}}
+    .page-hero-slide-1{background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1800&q=90');background-position:center 30%;}
+    .page-hero-slide-2{background-image:url('https://images.unsplash.com/photo-1544717305-2782549b5136?w=1800&q=90');}
+    .page-hero-slide-3{background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1800&q=90');}
+    .page-hero-slide-4{background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1800&q=90');}
+    .page-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(28,20,16,.25) 0%,rgba(28,20,16,.88) 100%);}
+    .page-hero-content{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6% 5rem;}
+    .page-hero-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.9rem;display:block;}
+    .page-hero-title{font-family:'Playfair Display',serif;font-weight:900;color:var(--white);line-height:1.0;margin-bottom:.85rem;}
+    .page-hero-title .line1{display:block;font-size:clamp(2rem,4vw,3.4rem);}
+    .page-hero-title .line2{display:block;font-size:clamp(2rem,4vw,3.4rem);font-style:italic;color:#fdbe3f;}
+    .page-hero-desc{font-size:clamp(.82rem,1.1vw,.93rem);color:rgba(255,255,255,.5);line-height:1.7;font-weight:300;max-width:500px;}
+
+    /* SHARED */
+    .section{padding:5rem 0;}
+    .inner{padding:0 6%;max-width:1240px;margin:0 auto;}
+    .eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;display:block;}
+    .eyebrow-light{color:rgba(255,255,255,.35);}
+    .h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.8rem,3.2vw,2.7rem);color:var(--dark);line-height:1.12;margin-bottom:1rem;}
+    .h2 em{font-style:italic;color:var(--red);}
+    .h2-white{color:var(--white);}
+    .lead{font-size:.95rem;color:var(--text-mid);line-height:1.85;font-weight:300;}
+    .rule{width:36px;height:2px;background:var(--red);opacity:.35;margin:1.5rem 0;}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.34,1.4,.64,1),transform .6s cubic-bezier(.34,1.4,.64,1);}
+    .reveal.in{opacity:1;transform:none;}
+    .d1{transition-delay:.05s}.d2{transition-delay:.12s}.d3{transition-delay:.19s}.d4{transition-delay:.26s}
+
+    /* OUR STORY */
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .story-img-wrap{position:relative;}
+    .story-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px;display:block;}
+    .story-badge{position:absolute;top:5%;left:-6%;background:var(--red);color:var(--white);padding:1rem 1.3rem;border-radius:3px;text-align:center;box-shadow:0 10px 28px rgba(200,41,46,.35);}
+    .story-badge-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1;}
+    .story-badge-label{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:3px;}
+    .story-text p{font-size:.92rem;color:var(--text-mid);line-height:1.9;font-weight:300;margin-bottom:.9rem;}
+    .story-text p:last-child{margin-bottom:0;}
+
+    /* VISION & MISSION */
+    .vm-section{background:var(--dark);}
+    .vm-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.07);margin-top:2.5rem;}
+    .vm-item{padding:2.5rem 0;}
+    .vm-item:first-child{padding-right:4rem;border-right:1px solid rgba(255,255,255,.07);}
+    .vm-item:last-child{padding-left:4rem;}
+    .vm-label{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+    .vm-label::after{content:'';flex:1;height:1px;background:rgba(200,41,46,.2);}
+    .vm-heading{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:.85rem;}
+    .vm-text{font-size:.87rem;color:rgba(255,255,255,.4);line-height:1.9;font-weight:300;}
+
+    /* CORE VALUES */
+    .values-section{background:var(--cream);}
+    .values-list{margin-top:2.5rem;border-top:1px solid var(--border);}
+    .value-row{display:grid;grid-template-columns:220px 1fr;gap:1.2rem 2.5rem;align-items:start;padding:1.5rem 0;border-bottom:1px solid var(--border);}
+    .value-row:last-child{border-bottom:none;}
+    .value-header{display:flex;align-items:baseline;gap:1rem;}
+    .value-num{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--red);opacity:.38;line-height:1;flex-shrink:0;}
+    .value-name{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--dark);}
+    .value-desc{font-size:.85rem;color:var(--text-mid);line-height:1.75;font-weight:300;}
+
+    /* LEADERSHIP */
+    .leadership-section{background:var(--sand);}
+    .leadership-card{display:grid;grid-template-columns:320px 1fr;background:var(--white);border-radius:4px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.06);}
+    .leadership-img-side{position:relative;min-height:380px;}
+    .leadership-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+    .leadership-body{padding:2.8rem 3rem;}
+    .leadership-name{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.4rem,2vw,2rem);color:var(--dark);line-height:1.15;margin-bottom:.3rem;}
+    .leadership-name em{font-style:italic;color:var(--red);}
+    .leadership-role{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:1.6rem;}
+    .leadership-text p{font-size:.9rem;color:var(--text-mid);line-height:1.88;font-weight:300;margin-bottom:.85rem;}
+    .leadership-text p:last-child{margin-bottom:0;}
+    .leadership-sig{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--dark);font-style:italic;margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--border);}
+
+    /* STAFF */
+    .staff-section{background:var(--white);}
+    .staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;}
+    .staff-card{text-align:left;}
+    .staff-img-wrap{width:100%;aspect-ratio:3/4;border-radius:3px;overflow:hidden;margin-bottom:1rem;background:var(--sand);}
+    .staff-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+    .staff-card:hover .staff-img{transform:scale(1.04);}
+    .staff-name{font-family:'DM Serif Display',serif;font-size:.93rem;color:var(--dark);margin-bottom:.22rem;}
+    .staff-role{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);}
+
+    /* WHY CHOOSE US */
+    .why-section{background:var(--cream);}
+    .why-list{display:grid;grid-template-columns:1fr 1fr;margin-top:2.5rem;border-top:1px solid var(--border);}
+    .why-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.7rem 2rem 1.7rem 0;border-bottom:1px solid var(--border);}
+    .why-item:nth-child(even){padding-left:2rem;padding-right:0;border-left:1px solid var(--border);}
+    .why-num{font-family:'Playfair Display',serif;font-size:.75rem;color:var(--red);font-weight:700;flex-shrink:0;padding-top:2px;opacity:.55;}
+    .why-title{font-family:'DM Serif Display',serif;font-size:.92rem;color:var(--dark);margin-bottom:.3rem;}
+    .why-desc{font-size:.83rem;color:var(--text-mid);line-height:1.7;font-weight:300;}
+
+    /* CTA */
+    .cta-section{background:var(--dark);overflow:hidden;}
+    .cta-grid{display:grid;grid-template-columns:1.1fr 0.9fr;}
+    .cta-left{background:var(--red);padding:5rem 6%;}
+    .cta-right{padding:5rem 6%;display:flex;flex-direction:column;justify-content:center;}
+    .cta-eyebrow{font-size:.58rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.9rem;display:block;}
+    .cta-title{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.7rem,2.8vw,2.5rem);color:var(--white);line-height:1.1;margin-bottom:1rem;}
+    .cta-title em{font-style:italic;color:#FFD580;}
+    .cta-sub{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.88;font-weight:300;max-width:340px;}
+    .cta-bullets{margin-top:1.8rem;display:flex;flex-direction:column;gap:.85rem;}
+    .cta-bullet{display:flex;align-items:center;gap:.75rem;font-size:.83rem;color:rgba(255,255,255,.45);font-weight:300;}
+    .cta-bullet::before{content:'✓';width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:rgba(255,255,255,.7);flex-shrink:0;text-align:center;line-height:20px;}
+    /* Right card */
+    .cta-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2.4rem 2.2rem;}
+    .cta-card-label{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.6rem;display:block;}
+    .cta-card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:.5rem;}
+    .cta-card-sub{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.7;font-weight:300;margin-bottom:2rem;}
+    .cta-divider{height:1px;background:rgba(255,255,255,.07);margin:1.8rem 0;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:.88rem 1.8rem;border-radius:4px;font-weight:600;font-size:.86rem;text-decoration:none;letter-spacing:.02em;transition:all .22s;border:none;font-family:'DM Sans',sans-serif;cursor:pointer;width:100%;}
+    .btn-solid{background:var(--white);color:var(--dark);}
+    .btn-solid:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);}
+    .btn-ghost{background:transparent;color:rgba(255,255,255,.6);border:1.5px solid rgba(255,255,255,.15);}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.45);color:var(--white);transform:translateY(-2px);}
+    .cta-buttons{display:flex;flex-direction:column;gap:.8rem;}
+    .cta-contact-note{font-size:.75rem;color:rgba(255,255,255,.22);text-align:center;margin-top:1.2rem;font-weight:300;}
+    .cta-contact-note a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s;}
+    .cta-contact-note a:hover{color:rgba(255,255,255,.7);}
+
+    /* FOOTER */
+    footer{background:#111;padding:4rem 0 2.5rem;}
+    .footer-inner{padding:0 6%;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07);}
+    .footer-brand p{font-size:.86rem;color:rgba(255,255,255,.38);line-height:1.8;max-width:260px;margin:1rem 0 1.5rem;font-weight:300;}
+    .footer-socials{display:flex;gap:.7rem;flex-wrap:wrap;}
+    .social-pill{display:inline-flex;align-items:center;gap:6px;padding:.4rem .9rem;background:rgba(255,255,255,.06);border-radius:4px;font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none;transition:all .2s;}
+    .social-pill:hover{background:var(--red);color:var(--white);transform:translateY(-2px);}
+    .footer-col h5{font-family:'DM Serif Display',serif;font-size:.92rem;color:rgba(255,255,255,.65);margin-bottom:1.2rem;}
+    .footer-col ul{list-style:none;}
+    .footer-col li{margin-bottom:.6rem;}
+    .footer-col a{font-size:.83rem;color:rgba(255,255,255,.32);text-decoration:none;font-weight:300;transition:color .2s;}
+    .footer-col a:hover{color:rgba(255,255,255,.72);}
+    .footer-bottom{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .footer-bottom p{font-size:.78rem;color:rgba(255,255,255,.22);font-weight:300;}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .story-grid{grid-template-columns:1fr;}
+      .story-img-wrap{display:none;}
+      .leadership-card{grid-template-columns:260px 1fr;}
+      .staff-grid{grid-template-columns:repeat(2,1fr);}
+      .why-list{grid-template-columns:1fr;}
+      .why-item:nth-child(even){padding-left:0;border-left:none;}
+      .cta-grid{grid-template-columns:1fr;}
+      .cta-right{padding:3rem 6%;}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
+    }
+    @media(max-width:768px){
+      .vm-grid{grid-template-columns:1fr;}
+      .vm-item:first-child{padding-right:0;border-right:none;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);}
+      .vm-item:last-child{padding-left:0;}
+      .leadership-card{grid-template-columns:1fr;}
+      .leadership-img-side{min-height:260px;}
+      /* VALUES — mobile: stack cleanly, number inline with name */
+      .value-row{display:flex;flex-direction:column;gap:.5rem;padding:1.3rem 0;}
+      .value-header{display:flex;align-items:baseline;gap:.8rem;}
+      .value-num{font-size:.78rem;opacity:.45;padding-top:0;}
+      .value-name{font-size:.92rem;}
+      .value-desc{font-size:.82rem;line-height:1.65;padding-left:0;}
+      .footer-grid{grid-template-columns:1fr;gap:2rem;}
+    }
+    @media(max-width:640px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .section{padding:2.5rem 0;}
+      .page-hero{height:400px;min-height:400px;}
+      .page-hero-desc{font-size:.76rem;max-width:90%;}
+      .staff-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <div class="logo-mark"><img src="IMG_E5475.JPG" alt="Logo" onerror="this.style.display='none';this.parentNode.innerHTML='<span>D</span>';"/></div>
+    <div class="logo-text">Debsteph Hall School</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="updates.html">Updates</a></li>
+    <li><a href="https://debsteph-portal.onrender.com/login.html" target="_blank" class="nav-portal">Student Portal</a></li>
+    <li><a href="enquiry.html" class="nav-enroll">Enroll Now</a></li>
+  </ul>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="programs.html" onclick="closeMob()">Programs</a>
+  <a href="activities.html" onclick="closeMob()">Activities</a>
+  <a href="index.html#news" onclick="closeMob()">Updates</a>
+  <a href="https://debsteph-portal.onrender.com/login.html" target="_blank" onclick="closeMob()">Student Portal</a>
+  <a href="enquiry.html" onclick="closeMob()">Enroll Now &rarr;</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero-wrap">
+<div class="page-hero">
+  <div class="page-hero-slides">
+    <div class="page-hero-slide page-hero-slide-1"></div>
+    <div class="page-hero-slide page-hero-slide-2"></div>
+    <div class="page-hero-slide page-hero-slide-3"></div>
+    <div class="page-hero-slide page-hero-slide-4"></div>
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-eyebrow">About Debsteph Hall School</span>
+    <h1 class="page-hero-title">
+      <span class="line1"><em>A Foundation For Excellence</em></span>
+    </h1>
+    <p class="page-hero-desc">Our journey reflects a shared vision of a safe, supportive, and enriching place for children to thrive.</p>
+  </div>
+  <!-- SVG wave — dips downward into the section below -->
+  <div class="page-hero-wave">
+    <svg viewBox="0 0 1440 44" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C360,44 1080,44 1440,0 L1440,44 L0,44 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</div>
+</div>
+
+<!-- OUR STORY -->
+<section class="section" style="background:var(--white);margin-top:-2px;position:relative;z-index:2;">
+  <div class="inner">
+    <div class="story-grid">
+      <div class="story-img-wrap reveal d1">
+        <img class="story-img" src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&q=85" alt="Debsteph Hall School" />
+        <div class="story-badge">
+          <div class="story-badge-num">2019</div>
+          <div class="story-badge-label">Est.</div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow reveal d1">Our Story</span>
+        <div class="rule reveal d3"></div>
+        <div class="story-text reveal d3">
+          <p>Debsteph Hall School was founded in 2019 with a single, clear purpose: to create a school where every child is truly seen. Situated in Bogije, Ibeju-Lekki, Lagos, the school was born out of a deep conviction that quality early education should be warm, intentional, and rooted in genuine care for the child as a whole person.</p>
+          <p>From our first intake of pupils, we established a culture of excellence balanced with compassion. Our proprietress brought together a team of dedicated educators committed to combining strong academic teaching with personal attention and character formation.</p>
+          <p>Today, Debsteph Hall serves families from across Bogije, Lekki, Ajah, and the wider Ibeju-Lekki corridor, offering programmes from Pre-school through Primary.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION & MISSION -->
+<section class="section vm-section">
+  <div class="inner">
+    <span class="eyebrow eyebrow-light reveal d1">What We Stand For</span>
+    <h2 class="h2 h2-white reveal d2">Vision &amp; <em>Mission</em></h2>
+    <div class="vm-grid">
+      <div class="vm-item reveal d3">
+        <div class="vm-label">Our Vision</div>
+        <div class="vm-heading">Raising generations ready for the world ahead.</div>
+        <p class="vm-text">To be the most trusted and nurturing school community in Ibeju-Lekki — raising generations of confident, compassionate, and academically strong young Nigerians who are prepared for the world ahead.</p>
+      </div>
+      <div class="vm-item reveal d4">
+        <div class="vm-label">Our Mission</div>
+        <div class="vm-heading">Education that is rigorous, personal, and joyful.</div>
+        <p class="vm-text">To provide every child with an exceptional early education — one that combines rigorous academics with personal care, character development, and a safe, joyful environment where each child can grow to their full potential.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="section values-section">
+  <div class="inner">
+    <span class="eyebrow reveal d1">What We Believe</span>
+    <h2 class="h2 reveal d2">Our Core <em>Values</em></h2>
+    <p class="lead reveal d3" style="max-width:480px;">Six principles that guide every decision we make — from how we teach to how we care for every child in our school.</p>
+    <div class="values-list">
+      <div class="value-row reveal d1">
+        <div class="value-header"><div class="value-num">01</div><div class="value-name">Excellence</div></div>
+        <p class="value-desc">High standards in everything we do — because our children deserve nothing less.</p>
+      </div>
+      <div class="value-row reveal d2">
+        <div class="value-header"><div class="value-num">02</div><div class="value-name">Care</div></div>
+        <p class="value-desc">Every child is known and genuinely valued. We build trust with pupils and families alike.</p>
+      </div>
+      <div class="value-row reveal d3">
+        <div class="value-header"><div class="value-num">03</div><div class="value-name">Character</div></div>
+        <p class="value-desc">We teach beyond the textbook — honesty, kindness, and integrity woven into daily school life.</p>
+      </div>
+      <div class="value-row reveal d1">
+        <div class="value-header"><div class="value-num">04</div><div class="value-name">Curiosity</div></div>
+        <p class="value-desc">Every question welcomed, every discovery celebrated. Curiosity is the engine of real learning.</p>
+      </div>
+      <div class="value-row reveal d2">
+        <div class="value-header"><div class="value-num">05</div><div class="value-name">Community</div></div>
+        <p class="value-desc">More than a school — a family. Parents, teachers and pupils working in partnership.</p>
+      </div>
+      <div class="value-row reveal d3">
+        <div class="value-header"><div class="value-num">06</div><div class="value-name">Safety</div></div>
+        <p class="value-desc">A secure, supervised environment where every child feels safe and every parent has peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="section leadership-section">
+  <div class="inner">
+    <span class="eyebrow reveal d1">Leadership</span>
+    <h2 class="h2 reveal d2" style="margin-bottom:2rem;">Meet Our <em>Proprietress</em></h2>
+    <div class="leadership-card reveal d3">
+      <div class="leadership-img-side">
+        <img class="leadership-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85" alt="Mrs. Oluwakemi B." />
+      </div>
+      <div class="leadership-body">
+        <div class="leadership-name">Mrs. <em>Oluwakemi</em> Babalola</div>
+        <div class="leadership-role">Proprietress &amp; Founder, Debsteph Hall School</div>
+        <div class="leadership-text">
+          <p>It is my sincere pleasure to welcome you to Debsteph Hall School. When this school was founded, my vision was straightforward: to build a place where every child is genuinely valued, where parents feel heard, and where learning is both rigorous and joyful.</p>
+          <p>I believe that the early years of a child's education are the most important investment a family can make. The habits, confidence, and character formed in these years stay with a child for life — which is why we pour so much care into every detail of what we do here.</p>
+          <p>We are not just a school. We are a community built on trust, and that trust is something we earn every single day.</p>
+        </div>
+        <div class="leadership-sig">,<em>- Mrs. Babalola</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEET OUR STAFF -->
+<section class="section staff-section">
+  <div class="inner">
+    <span class="eyebrow reveal d1">Our People</span>
+    <h2 class="h2 reveal d2">Meet the <em>Team</em></h2>
+    <p class="lead reveal d3" style="max-width:460px;margin-bottom:0;">Behind every thriving child is a dedicated teacher. Our staff are carefully chosen for their passion, patience, and love for their work.</p>
+    <div class="staff-grid">
+      <div class="staff-card reveal d1">
+        <div class="staff-img-wrap">
+          <img class="staff-img" src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=600&q=85" alt="Head Teacher" />
+        </div>
+        <div class="staff-name">Mrs. Adunola F.</div>
+        <div class="staff-role">Head Teacher</div>
+      </div>
+      <div class="staff-card reveal d2">
+        <div class="staff-img-wrap">
+          <img class="staff-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=85" alt="Head of Nursery" />
+        </div>
+        <div class="staff-name">Mrs. Temitope A.</div>
+        <div class="staff-role">Head of Nursery</div>
+      </div>
+      <div class="staff-card reveal d3">
+        <div class="staff-img-wrap">
+          <img class="staff-img" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85" alt="Head of Primary" />
+        </div>
+        <div class="staff-name">Mr. Oluwaseun K.</div>
+        <div class="staff-role">Head of Primary</div>
+      </div>
+      <div class="staff-card reveal d4">
+        <div class="staff-img-wrap">
+          <img class="staff-img" src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=600&q=85" alt="Admin &amp; Welfare" />
+        </div>
+        <div class="staff-name">Mrs. Blessing O.</div>
+        <div class="staff-role">Admin &amp; Welfare</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section why-section">
+  <div class="inner">
+    <span class="eyebrow reveal d1">Why Debsteph Hall</span>
+    <h2 class="h2 reveal d2">Why Families <em>Choose Us</em></h2>
+    <div class="why-list">
+      <div class="why-item reveal d1">
+        <span class="why-num">01</span>
+        <div><div class="why-title">Safe &amp; Secure Campus</div><p class="why-desc">A fully supervised environment where children are protected and parents have complete peace of mind every school day.</p></div>
+      </div>
+      <div class="why-item reveal d2">
+        <span class="why-num">02</span>
+        <div><div class="why-title">Passionate, Qualified Teachers</div><p class="why-desc">Our educators bring patience, skill, and genuine love for their work — drawing out the best in every pupil.</p></div>
+      </div>
+      <div class="why-item reveal d3">
+        <span class="why-num">03</span>
+        <div><div class="why-title">Strong Academic Foundation</div><p class="why-desc">From phonics and numeracy to science and computing — we build skills that last a lifetime.</p></div>
+      </div>
+      <div class="why-item reveal d1">
+        <span class="why-num">04</span>
+        <div><div class="why-title">Character Development</div><p class="why-desc">We raise well-rounded children — honest, respectful, and ready to contribute positively to their world.</p></div>
+      </div>
+      <div class="why-item reveal d2">
+        <span class="why-num">05</span>
+        <div><div class="why-title">Personal Attention</div><p class="why-desc">Small classes mean every child is known and supported at their own pace — no one falls behind unnoticed.</p></div>
+      </div>
+      <div class="why-item reveal d3">
+        <span class="why-num">06</span>
+        <div><div class="why-title">Active Parent Partnership</div><p class="why-desc">We keep families closely involved through regular updates, report cards, and an open-door approach.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-grid">
+    <div class="cta-left">
+      <span class="cta-eyebrow">Come &amp; See for Yourself</span>
+      <h2 class="cta-title">Experience the Debsteph Hall <em>Difference</em></h2>
+      <p class="cta-sub">We believe every family deserves to see our school in action before making a decision. Schedule a visit — we&rsquo;d love to welcome you.</p>
+      <div class="cta-bullets">
+        <div class="cta-bullet">Weekday visits available — flexible to your schedule</div>
+        <div class="cta-bullet">Meet our teachers and tour the full campus</div>
+        <div class="cta-bullet">No obligation — just an open, honest conversation</div>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-card">
+        <span class="cta-card-label">Ready to take the next step?</span>
+        <div class="cta-card-title">Book a School Visit</div>
+        <p class="cta-card-sub">Come and see Debsteph Hall in action. Our team will walk you through the campus, introduce you to our teachers, and answer every question you have.</p>
+        <div class="cta-buttons">
+          <a href="enquiry.html" class="btn btn-solid">Schedule a Visit &rarr;</a>
+          <a href="tel:08030937003" class="btn btn-ghost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
+            Call 0803 093 7003
+          </a>
+        </div>
+        <div class="cta-divider"></div>
+        <p class="cta-contact-note">Or send us a message on Instagram &nbsp;<a href="https://instagram.com/debstephhallschool" target="_blank">@debstephhallschool</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+          <div style="border-radius:8px;width:40px;height:40px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.08);">
+            <img src="IMG_E5475.JPG" alt="Logo" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';" />
+          </div>
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);">Debsteph Hall School</span>
+        </div>
+        <p>A nurturing home for curious learners. Quality education from Pre-school to Primary, built on excellence, care, and character.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/debstephhallschool" target="_blank" class="social-pill">Instagram</a>
+          <a href="tel:08030937003" class="social-pill">Call Us</a>
+          <a href="https://debsteph-portal.onrender.com/login.html" target="_blank" class="social-pill">Student Portal</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="index.html#news">News &amp; Updates</a></li>
+          <li><a href="enquiry.html">Enrol Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="programs.html">Pre-school (Ages 2&ndash;3)</a></li>
+          <li><a href="programs.html">Nursery (Ages 4&ndash;5)</a></li>
+          <li><a href="programs.html">Primary (Ages 6&ndash;12)</a></li>
+          <li><a href="programs.html">Extra-Curricular</a></li>
+          <li><a href="programs.html">After-School Care</a></li>
+          <li><a href="programs.html">Holiday Programme</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Debsteph Hall School. All rights reserved.</p>
+      <p>Bogije, Ibeju-Lekki, Lagos, Nigeria</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // HERO SLIDESHOW — Ken Burns
+  const phSlides = Array.from(document.querySelectorAll('.page-hero-slide'));
+  const PH_KB = ['kb-zoom-in','kb-zoom-out','kb-drift-r','kb-drift-l','kb-drift-up','kb-drift-dn','kb-tilt-r','kb-tilt-l'];
+  const PH_DUR = 6000;
+  const phAnims = phSlides.map((_, i) => PH_KB[i % PH_KB.length]);
+  let phIdx = 0;
+  function applyPhKB(slide, anim) {
+    slide.style.animation = 'none'; slide.offsetHeight;
+    slide.style.animation = `${anim} ${PH_DUR + 1800}ms ease-in-out forwards`;
+  }
+  applyPhKB(phSlides[phIdx], phAnims[phIdx]);
+  phSlides[phIdx].classList.add('active');
+  function goPhSlide(n) {
+    const prev = phIdx;
+    phIdx = (n + phSlides.length) % phSlides.length;
+    if (prev === phIdx) return;
+    phSlides[prev].classList.remove('active');
+    applyPhKB(phSlides[phIdx], phAnims[phIdx]);
+    phSlides[phIdx].classList.add('active');
+  }
+  setInterval(() => goPhSlide(phIdx + 1), PH_DUR);
+
+  // NAV SCROLL
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+  // MOBILE NAV
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mobileNav');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
+  function closeMob() { ham.classList.remove('open'); mob.classList.remove('open'); }
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
